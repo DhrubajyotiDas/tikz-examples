@@ -31,41 +31,50 @@ fontsize = 11pt, footinclude = true]{article}
     %frame=L
 } 
 
+ 
 
 \begin{document}
 	\section{Simple straight lines} % (fold)
 	\label{sec:simple_straight_lines}
-\begin{tikzpicture}
+
+\begin{tabular}{p{3cm}l}
+\begin{tikzpicture}[baseline = (current bounding box.east)]
 	\draw (0,0) -- (1,2);
 \end{tikzpicture}
+&
 \begin{lstlisting}
 \begin{tikzpicture}
 	\draw (0,0) -- (1,2);
 \end{tikzpicture}
-\end{lstlisting}
-
+\end{lstlisting}	
+\\
+&
+\\
+\begin{tikzpicture}[baseline = (current bounding box.east)]
+	\draw (0,0) -- (0,2) -- (2,3) -- (1,0) -- (0, 2);
+	\draw (0,0) -- (2,3);
+	\draw[help lines] (0, 0) grid (2, 3);
+\end{tikzpicture}
+&
+\begin{lstlisting}
 \begin{tikzpicture}
 	\draw (0,0) -- (0,2) -- (2,3) -- (1,0) -- (0, 2);
 	\draw (0,0) -- (2,3);
 	\draw[help lines] (0, 0) grid (2, 3);
 \end{tikzpicture}
-\begin{lstlisting}
-\begin{tikzpicture}
-	\draw (0,0) -- (0,2) -- (2,3) -- (1,0) -- (0, 2);
-	\draw (0,0) -- (2,3);
-	\draw[help lines] (0, 0) grid (2, 3);
-\end{tikzpicture}
 \end{lstlisting}
+\end{tabular}	
 
-\section{Scaling pictures} % (fold)
+
+\section{Scaling pictures} 
 \label{sec:scaling_pictures}
-
-% section scaling_pictures (end)
-\begin{tikzpicture}[scale = 1.5]
+\begin{tabular}{p{3cm}l}
+\begin{tikzpicture}[scale = 1.5, baseline = (current bounding box.east)]
 	\draw (0,0) -- (0,2) -- (2,3) -- (1,0) -- (0, 2);
 	\draw (0,0) -- (2,3);
 	\draw[help lines] (0, 0) grid (2, 3);
 \end{tikzpicture}
+&
 \begin{lstlisting}
 \begin{tikzpicture}[scale = 1.5]
 	\draw (0,0) -- (0,2) -- (2,3) -- (1,0) -- (0, 2);
@@ -73,12 +82,15 @@ fontsize = 11pt, footinclude = true]{article}
 	\draw[help lines] (0, 0) grid (2, 3);
 \end{tikzpicture}
 \end{lstlisting}
-
-\begin{tikzpicture}[xscale = 1.5]
+\\
+&
+\\
+\begin{tikzpicture}[xscale = 1.5, baseline = (current bounding box.east)]
 	\draw (0,0) -- (0,2) -- (2,3) -- (1,0) -- (0, 2);
 	\draw (0,0) -- (2,3);
 	\draw[help lines] (0, 0) grid (2, 3);
 \end{tikzpicture}
+&
 \begin{lstlisting}
 \begin{tikzpicture}[xscale = 1.5]
 	\draw (0,0) -- (0,2) -- (2,3) -- (1,0) -- (0, 2);
@@ -86,12 +98,15 @@ fontsize = 11pt, footinclude = true]{article}
 	\draw[help lines] (0, 0) grid (2, 3);
 \end{tikzpicture}
 \end{lstlisting}
-
-\begin{tikzpicture}[yscale = 1.5]
+\\
+&
+\\
+\begin{tikzpicture}[yscale = 1.5, baseline = (current bounding box.east)]
 	\draw (0,0) -- (0,2) -- (2,3) -- (1,0) -- (0, 2);
 	\draw (0,0) -- (2,3);
 	\draw[help lines] (0, 0) grid (2, 3);
 \end{tikzpicture}
+&
 \begin{lstlisting}
 \begin{tikzpicture}[yscale = 1.5]
 	\draw (0,0) -- (0,2) -- (2,3) -- (1,0) -- (0, 2);
@@ -99,39 +114,49 @@ fontsize = 11pt, footinclude = true]{article}
 	\draw[help lines] (0, 0) grid (2, 3);
 \end{tikzpicture}
 \end{lstlisting}
+\end{tabular}
 
 \section{Arrows} % (fold)
 \label{sec:arrows}
-\begin{tikzpicture}
-\draw [->] (0,0) -- (2, 0);
-\draw [<-] (0, -0.5) -- (2,-0.5);
-\draw [|->] (0,-1) -- (2,-1);
-\end{tikzpicture}
-\begin{lstlisting}
-\begin{tikzpicture}
-\draw [->] (0,0) -- (2, 0);
-\draw [<-] (0, -0.5) -- (2,-0.5);
-\draw [|->] (0,-1) -- (2,-1);
-\end{tikzpicture}
-\end{lstlisting}
+\begin{tabular}{p{3cm}l}
 
+\begin{tikzpicture}[baseline = (current bounding box.east)]
+\draw [->] (0,0) -- (2, 0);
+\draw [<-] (0, -0.5) -- (2,-0.5);
+\draw [|->] (0,-1) -- (2,-1);
+\end{tikzpicture}
+&
+\begin{lstlisting}
 \begin{tikzpicture}
+\draw [->] (0,0) -- (2, 0);
+\draw [<-] (0, -0.5) -- (2,-0.5);
+\draw [|->] (0,-1) -- (2,-1);
+\end{tikzpicture}
+\end{lstlisting}
+\\
+&
+\\
+\begin{tikzpicture}[baseline = (current bounding box.east)]
 \draw [<->] (2, 0) -- (0,0) -- (0,2);
 \end{tikzpicture}
+&
 \begin{lstlisting}
 \begin{tikzpicture}
 \draw [<->] (2, 0) -- (0,0) -- (0,2);
 \end{tikzpicture}
 \end{lstlisting}
+\end{tabular}
 
 \section{Changing thickness} % (fold)
 \label{sec:changing_thickness}
-\begin{tikzpicture}
+\begin{tabular}{p{3cm}l}
+\begin{tikzpicture}[baseline = (current bounding box.east)]
 \draw [ultra thick] (0,1) -- (2, 1);
 \draw [thick] (0,0.5) -- (2,0.5);
 \draw [thin] (0,0) -- (2,0);
 \draw [ultra thin] (0, -0.5) -- (2, -0.5);
 \end{tikzpicture}
+&
 \begin{lstlisting}
 \begin{tikzpicture}
 \draw [ultra thick] (0,1) -- (2, 1);
@@ -140,6 +165,10 @@ fontsize = 11pt, footinclude = true]{article}
 \draw [ultra thin] (0, -0.5) -- (2, -0.5);
 \end{tikzpicture}
 \end{lstlisting}
+\end{tabular}
+
+\vspace{1em}
+\noindent
 Full options include 
 ultra thin, very thin, thin, semithick, thick, very
 thick, and ultra. Custom widths can also be used.
@@ -159,11 +188,14 @@ thick, and ultra. Custom widths can also be used.
 
 \section{Dashes and dots} % (fold)
 \label{sec:dashes_and_dots}
-\begin{tikzpicture}
+\begin{tabular}{p{3cm}l}
+
+\begin{tikzpicture}[baseline = (current bounding box.east)]
 \draw [dashed, ultra thick] (0,1) -- (2,1);
 \draw [dashed] (0,0.5) -- (2,0.5);
 \draw [dotted] (0,0) -- (2,0);
 \end{tikzpicture}
+&
 \begin{lstlisting}
 \begin{tikzpicture}
 \draw [dashed, ultra thick] (0,1) -- (2,1);
@@ -171,14 +203,20 @@ thick, and ultra. Custom widths can also be used.
 \draw [dotted] (0,0) -- (2,0);
 \end{tikzpicture}
 \end{lstlisting}
+\end{tabular}
+
+
 
 \section{Colors} % (fold)
 \label{sec:colors}
-\begin{tikzpicture}
+\begin{tabular}{p{3cm}l}
+
+\begin{tikzpicture}[baseline = (current bounding box.east)]
 \draw [gray, thick] (0,1) -- (2, 1);
 \draw [red, thick] (0,0.5) -- (2, 0.5);
 \draw [blue, thick] (0,0) -- (2, 0);
 \end{tikzpicture}
+&
 \begin{lstlisting}
 \begin{tikzpicture}
 \draw [gray, thick] (0,1) -- (2, 1);
@@ -186,6 +224,9 @@ thick, and ultra. Custom widths can also be used.
 \draw [blue, thick] (0,0) -- (2, 0);
 \end{tikzpicture}
 \end{lstlisting}
+\end{tabular}
+
+\vspace{1em}\noindent
 Other colors include red \tikz{\draw [red, line width = 6] (0,0) -- (0.5, 0);}
 green \tikz{\draw [green, line width = 6] (0,0) -- (0.5, 0);}
 yellow \tikz{\draw [yellow, line width = 6] (0,0) -- (0.5, 0);}
@@ -226,18 +267,25 @@ white \tikz{\draw [white, line width = 6] (0,0) -- (0.5, 0);}
 Arc of radius 1 starts at the point (6,0), leaves it at an angle of 45 degrees and stops when its slope is 135 degrees.
 To make paths take smoother turns,
 
-\vspace{1em}
-\begin{tikzpicture}
+\vspace{1em}\noindent
+\begin{tabular}{p{3cm}l}
+
+\begin{tikzpicture}[baseline = (current bounding box.east)]
 \draw [<->, rounded corners, thick, red] (0,2) -- (0,0) -- (2,0);
 \end{tikzpicture}
+&
 \begin{lstlisting}
 \begin{tikzpicture}
-\draw [<->, rounded corners, thick, red] (0,2) -- (0,0) -- (2,0);
+\draw [<->, rounded corners, thick, red] 
+	(0,2) -- (0,0) -- (2,0);
 \end{tikzpicture}
 \end{lstlisting}
+\end{tabular}
+
+\vspace{1em}\noindent
 Lots of anchor points can be specified explicitly to make a smoother curve.
 
-\vspace{1em}
+\vspace{1em}\noindent
 \begin{tikzpicture}[xscale=25,yscale=5]
 \draw [<->, help lines] (0.6,1.34) -- (0.6,1) -- (1.05,1);
 \draw[orange, thick] (0.6, 1.0385) --
@@ -272,7 +320,7 @@ Lots of anchor points can be specified explicitly to make a smoother curve.
 (0.61, 1.06372) -- (0.62, 1.08756) -- (0.63, 1.11012) -- 
 (0.64,1.13147) -- (0.65, 1.15166) -- (0.66, 1.17074) -- 
 (0.67, 1.18874) -- (0.68,1.20568) -- (0.69, 1.22157) -- 
-[... lots of points ...]
+%[... lots of points ...]
 (0.9991, 1.03042) -- (0.9992, 1.02866) -- (0.9993,1.02679) -- 
 (0.9994, 1.02478) -- (0.9995, 1.0226) -- (0.9996, 1.02019) -- 
 (0.9997,1.01747) -- (0.9998, 1.01424) -- (0.9999, 1.01005) -- 
@@ -284,17 +332,23 @@ Lots of anchor points can be specified explicitly to make a smoother curve.
 \end{lstlisting}
 A simpler way to draw a curve is to specify the inlet and exit points, and the inlet and exit angles. 
 
-\noindent
-\begin{tikzpicture}
+\vspace{1em}\noindent
+\begin{tabular}{p{3cm}l}
+
+\begin{tikzpicture}[baseline = (current bounding box.east)]
 \draw[very thick] (0,0) to [out=90,in=-90] (2,1.5);
 \draw[gray] (0,0) grid (2,2);
 \end{tikzpicture}
+&
 \begin{lstlisting}
 \begin{tikzpicture}
 \draw[very thick] (0,0) to [out=90,in=195] (2,1.5);
 \draw[gray] (0,0) grid (2,2);
 \end{tikzpicture}
 \end{lstlisting}
+\end{tabular}
+
+\vspace{1em}\noindent
 To decipher the angles, 
 \begin{itemize}
 	\item Draw a vector at the beginning, (0,0) pointing \emph{right} along the base of the figure. Rotate the vector \emph{counterclockwise} until it is tangent with the drawn curve. The angle turned is the \texttt{\small{out}} angle.
@@ -331,6 +385,7 @@ plot (\x, {0.65 - \x - 2*\x*\x});
 \end{lstlisting}
 Available functions include {\small \texttt{factorial(\textbackslash x)}, \texttt{sqrt(\textbackslash x)}, \texttt{pow(\textbackslash x,y)}} ($x^y$){\small, \texttt{exp(\textbackslash x)}, \texttt{ln(\textbackslash x)}, \texttt{log10(\textbackslash x)}, \texttt{log2(\textbackslash x)}, \texttt{abs(\textbackslash x)}, \texttt{mod(\textbackslash x,y)}, \texttt{round(\textbackslash x)}, \texttt{floor(\textbackslash x)}, \texttt{ceil(\textbackslash x)}, \texttt{sin(\textbackslash x)}, (\texttt{sin(\textbackslash x r)}} for radians{\small ), \texttt{cos(\textbackslash x)}, \texttt{cos(\textbackslash x r)}, \texttt{tan(\textbackslash x)}, \texttt{tan(\textbackslash x r)}, \texttt{min(\textbackslash x, y)}, \texttt{max(\textbackslash x, y)}. \par} These functions can be mixed together, along with two provided constants, \texttt{e} =  2.718281828, and \texttt{pi} = 3.141592654.
 
+\vspace{1em}\noindent
 \begin{tikzpicture}[yscale=1.5]
 \draw [gray, thick, ->] (0,0) -- (6.5,0);
 \draw [gray, thick, <->] (0,-1.1) -- (0,1.1);
@@ -352,15 +407,6 @@ plot (\x, {cos(\x r)*exp(\x/exp(2*pi))});
 \section{Filling areas} % (fold)
 \label{sec:filling_areas}
 Closed paths can be filled.
-
-% \begin{tikzpicture}
-% \draw [fill=red,ultra thick] (0,0) rectangle (1,1);
-% \draw [fill=red,ultra thick,red] (2,0) rectangle (3,1);
-% \draw [blue, fill=blue] (4,0) -- (5,1) -- (4.75,0.15) -- (4,0);
-% \draw [fill] (7,0.5) circle [radius=0.1];
-% \draw [fill=orange] (9,0) rectangle (11,1);
-% \draw [fill=white] (9.25,0.25) rectangle (10,1.5);
-% \end{tikzpicture}
 
 \noindent
 \begin{tikzpicture}
@@ -395,5 +441,396 @@ To suppress the outline, replace the {\small \texttt{\textbackslash draw}} comma
 \path [fill = yellow] (2,0) rectangle (3.5,1);
 \end{tikzpicture}
 \end{lstlisting}
+Mix \texttt{-}\texttt{-} and \texttt{to} to connect arcs and straight lines.
+
+\noindent
+\begin{tikzpicture}
+\draw [ultra thick] (0,0) to [out = 87, in = 135] (1,1) -- (0.85, 0.15) -- (0,0);
+\draw [ultra thick, fill = purple] (2,0) to [out = 87, in = 135] (3,1) -- (2.85, 0.15) -- (2,0);
+\path [fill = purple] (4,0) to [out = 87, in = 135] (5,1) -- (4.85, 0.15) -- (4,0);
+\end{tikzpicture}
+\begin{lstlisting}
+\begin{tikzpicture}
+\draw [ultra thick] (0,0) to [out = 87, in = 135] (1,1) -- (0.85, 0.15) -- (0,0);
+\draw [ultra thick, fill = purple] (2,0) to [out = 87, in = 135] (3,1) -- (2.85, 0.15) -- (2,0);
+\path [fill = purple] (4,0) to [out = 87, in = 135] (5,1) -- (4.85, 0.15) -- (4,0);
+\end{tikzpicture}
+\end{lstlisting}
+
+\section{Labels in pictures} % (fold)
+\label{sec:labels_in_pictures}
+
+\begin{tabular}{p{3cm}l}
+
+\begin{tikzpicture}[baseline = (current bounding box.east)]
+\draw [help lines] (0,0) grid (2,2);
+\draw [thick, <->] (0,2) -- (0,0) -- (2,0);
+\node at (1,1) {yes};
+\end{tikzpicture}
+&
+\begin{lstlisting}
+\begin{tikzpicture}
+\draw [help lines] (0,0) grid (2,2);
+\draw [thick, <->] (0,2) -- (0,0) -- (2,0);
+\node at (1,1) {yes};
+\end{tikzpicture}
+\end{lstlisting}
+\end{tabular}
+
+\vspace{1em}\noindent
+``yes'' is positioned such that the baseline of the text is centered on {\small \texttt{(1,1)}}. For positioning labels relative to a point,
+
+\vspace{1em}
+\noindent
+\begin{tabular}{p{3cm}l}
+
+\begin{tikzpicture}[baseline = (current bounding box.east)]
+\draw [thick, <->] (0,2) -- (0,0) -- (2,0);
+\draw [fill] (1,1) circle [radius = 0.025];
+\node [below] at (1,1) {below};
+\node [above] at (1,1) {above};
+\node [left] at (1,1) {left};
+\node [right] at (1,1) {right};
+\end{tikzpicture}
+&
+\begin{lstlisting}
+\begin{tikzpicture}
+\draw [thick, <->] (0,2) -- (0,0) -- (2,0);
+\draw [fill] (1,1) circle [radius = 0.025];
+\node [below] at (1,1) {below};
+\node [above] at (1,1) {above};
+\node [left] at (1,1) {left};
+\node [right] at (1,1) {right};
+\end{tikzpicture}
+\end{lstlisting}
+
+\end{tabular}
+
+\vspace{1em}\noindent
+Compound positioning is also possible,
+
+\vspace{1em}
+\noindent
+\begin{tikzpicture}[scale = 2.0]
+\draw [thick, <->] (0,2) -- (0,0) --(2,0);
+\draw [fill] (1,1) circle [radius = 0.025];
+\node [below right, red] at (1,1) {below right};
+\node [above left, green] at (1,1) {above left};
+\node [below left, blue] at (1,1) {below left};
+\node [above right, cyan] at (1,1) {above right};
+\end{tikzpicture}
+\begin{lstlisting}
+\begin{tikzpicture}[scale = 2.0]
+\draw [thick, <->] (0,2) -- (0,0) --(2,0);
+\draw [fill] (1,1) circle [radius = 0.025];
+\node [below right, red] at (1,1) {below right};
+\node [above left, green] at (1,1) {above left};
+\node [below left, blue] at (1,1) {below left};
+\node [above right, cyan] at (1,1) {above right};
+\end{tikzpicture}
+\end{lstlisting}
+
+\noindent
+Labeling axes and points is also easy.
+
+\vspace{1em}\noindent
+\begin{tabular}{p{3cm}l}
+
+\begin{tikzpicture}[scale = 1.5,baseline = (current bounding box.east)]
+\draw [thick, <->] (0,1) -- (0,0) --(1,0);
+\node [below right] at (1,0) {$x$};
+\node [left] at (0,1) {$y$};
+\draw [fill] (.4, .6) circle [radius = 0.5 pt];
+\node [above right] at (0.4, 0.6) {$A$};
+\end{tikzpicture}
+&
+\begin{lstlisting}
+\begin{tikzpicture}[scale = 1.5]
+\draw [thick, <->] (0,1) -- (0,0) --(1,0);
+\node [below right] at (1,0) {$x$};
+\node [left] at (0,1) {$y$};
+\draw [fill] (0.4, 0.6) circle [radius = 0.5 pt];
+\node [above right] at (0.4, 0.6) {$A$};
+\end{tikzpicture}
+\end{lstlisting}
+\end{tabular}
+
+\vspace{1em}\noindent
+Alternatively, nodes can be mixed in the middle of paths.
+
+\vspace{1em}\noindent
+\begin{tabular}{p{3cm}l}
+
+\begin{tikzpicture}[scale = 1.5,baseline = (current bounding box.east)]
+\draw [thick, <->] (0,1) node [left] {$y$} -- (0,0)
+	-- (1,0) node [below right] {$x$};
+\draw [fill] (0.4, 0.6) circle [radius = 0.5 pt] 
+	node [above right] (0.4, 0.6) {$A$};
+\end{tikzpicture}
+&
+\begin{lstlisting}
+\begin{tikzpicture}[scale = 1.5]
+\draw [thick, <->] (0,1) node [left] {$y$} -- (0,0)
+	-- (1,0) node [below right] {$x$};
+\draw [fill] (0.4, 0.6) circle [radius = 0.5 pt] 
+	node [above right] (0.4, 0.6) {$A$};
+\end{tikzpicture}
+\end{lstlisting}
+\end{tabular}
+
+\vspace{1em}\noindent
+Multiple lines can be added to nodes with \textbackslash\textbackslash, but alignment of the node text must be explicitly specified.
+
+\vspace{1em}\noindent
+\begin{tikzpicture}
+\draw [thick] (0,0) to (9,0);
+\draw (0, -0.2) to (0, 0.2);
+\draw (3, -0.2) to (3, 0.2);
+\draw (6, -0.2) to (6, 0.2);
+\draw (9, -0.2) to (9, 0.2);
+\node[align = left, below] at (1.5, -0.5)
+	{This is period 1,\\and is aligned\\left.};
+\node[align = center, below] at (4.5, -0.5)
+	{This is period 2,\\and is aligned\\center.};
+\node[align = right, below] at (7.5, -0.5)
+	{This is period 3,\\and is aligned\\right.};
+\end{tikzpicture}
+\begin{lstlisting}
+\begin{tikzpicture}
+\draw [thick] (0,0) to (9,0);
+\draw (0, -0.2) to (0, 0.2);
+\draw (3, -0.2) to (3, 0.2);
+\draw (6, -0.2) to (6, 0.2);
+\draw (9, -0.2) to (9, 0.2);
+\node[align = left, below] at (1.5, -0.5)
+	{This is period 1,\\and is aligned\\left.};
+\node[align = center, below] at (4.5, -0.5)
+	{This is period 2,\\and is aligned\\center.};
+\node[align = right, below] at (7.5, -0.5)
+	{This is period 3,\\and is aligned\\right.};
+\end{tikzpicture}
+\end{lstlisting}
+
+\section{Examples} % (fold)
+\label{sec:examples}
+
+\subsection{Hotelling} % (fold)
+\label{sub:hotelling}
+\begin{tikzpicture}[xscale = 8]
+\draw [red, very thick] (0,0) -- (0.5,0);
+\draw [green, very thick] (0.5,0) -- (1,0);
+\draw [thick] (0, -0.1) node [below] {0} to (0, 0.1);
+\draw [thick] (0.5, -0.1) node [below] {$a=b=$ 1/2} to (0.5, 0.1);
+\draw [thick] (1, -0.1) node [below] {1} to (1, 0.1);
+\end{tikzpicture}
+\begin{lstlisting}
+\begin{tikzpicture}[xscale = 8]
+\draw [red, very thick] (0,0) -- (0.5,0);
+\draw [green, very thick] (0.5,0) -- (1,0);
+\draw [thick] (0, -0.1) node [below] {0} to (0, 0.1);
+\draw [thick] (0.5, -0.1) node [below] {$a=b=$ 1/2} to (0.5, 0.1);
+\draw [thick] (1, -0.1)	node [below] {1} to (1, 0.1);
+\end{tikzpicture}
+\end{lstlisting}
+
+\subsection{Vertical differentiation} % (fold)
+\label{sub:vertical_differentiation}
+
+% subsection vertical_differentiation (end)
+
+\begin{tabular}{p{4cm}l}
+\begin{tikzpicture}[yscale=3, baseline = (current bounding box.east)]
+\draw[red, very thick] (0,0) to (0, 0.45);
+\draw[green, very thick] (0,0.45) to (0, 1);
+\draw (-0.1, 0) to (0.1, 0);
+\draw[thick] (-0.1, 0.2) to (0.1, 0.2) 
+	node [align = left, right] {$q_1$ vendue\\au prix $p_1$};
+\draw[thick] (-0.1, 0.8) to (0.1, 0.8) 
+	node [align = left, right] {$q_2$ vendue\\au prix $p_2$};
+\draw (-0.1, 1) to (0.1, 1);
+\node [right] at (0.1, 0.45) {d\'epend de $p_1$ et $p_2$};
+\end{tikzpicture} 
+& 
+\begin{lstlisting}
+\begin{tikzpicture}[yscale=3]
+\draw[red, very thick] (0,0) to (0, 0.45);
+\draw[green, very thick] (0,0.45) to (0, 1);
+\draw (-0.1, 0) to (0.1, 0);
+\draw[thick] (-0.1, 0.2) to (0.1, 0.2) 
+	node [align = left, right] 
+	{$q_1$ vendue\\au prix $p_1$};
+\draw[thick] (-0.1, 0.8) to (0.1, 0.8) 
+	node [align = left, right] 
+	{$q_2$ vendue\\au prix $p_2$};
+\draw (-0.1, 1) to (0.1, 1);
+\node [right] at (0.1, 0.45) {d\'epend de $p_1$ et $p_2$};
+\end{tikzpicture} 
+\end{lstlisting}
+\end{tabular}
+
+\subsection{A curve} % (fold)
+\label{sub:a_curve}
+\begin{tabular}{p{4cm}l}
+\begin{tikzpicture}[scale = 3, baseline = (current bounding box.east)]
+\draw [thick, <->] (0,1) node [above] {$V(q)$} -- (0,0) -- (1,0) node [below] {$q$};
+\draw [very thick] (0,0) to [out = 90, in = 145] (0.8, 0.9);
+\end{tikzpicture}
+&
+\begin{lstlisting}
+\begin{tikzpicture}[scale = 3]
+\draw [thick, <->] (0,1) node [left] {$V(q)$} 
+	-- (0,0) -- (1,0) node [below] {$q$};
+\draw [very thick] (0,0) to 
+	[out = 90, in = 145] (0.8, 0.9);
+\end{tikzpicture}
+\end{lstlisting}
+\end{tabular}
+
+\subsection{Tangency} % (fold)
+\label{sub:tangency}
+\begin{tabular}{p{4cm}l}
+\begin{tikzpicture}[scale = 0.75, baseline = (current bounding box.east)]
+\draw [help lines] (0,0) grid (5,5);
+\draw [black, <->] (0,5) -- (0,0) -- (5,0);
+\draw [thick] (0,4) to (4,0);
+\draw [dashed, ultra thick] (1, 4) to [out = -90, in = 135] (2,2);
+\draw [dashed, ultra thick] (2,2) to [out = -45, in = 180] (4, 1);
+\end{tikzpicture}
+&
+\begin{lstlisting}
+\begin{tikzpicture}
+\draw [help lines] (0,0) grid (5,5);
+\draw [black, <->] (0,5) -- (0,0) -- (5,0);
+\draw [thick] (0,4) to (4,0);
+\draw [dashed, ultra thick] (1, 4) to 
+	[out = -90, in = 135] (2,2);
+\draw [dashed, ultra thick] (2,2) to 
+	[out = -45, in = 180] (4, 1);
+\end{tikzpicture}
+\end{lstlisting}
+\end{tabular}
+
+\subsection{Consumer surplus} % (fold)
+\label{sub:consumer_surplus}
+
+\begin{tikzpicture}
+\path [fill = yellow] (0,0)	to (0,5) 
+	to [out = -75, in = 150] (3,0.8)
+	-- (3,0) -- (0,0); 
+\draw [thick, <->] (0,6) node [left] {$P$}
+  -- (0,0) node [below left] {$(0,0)$} 
+  -- (6,0) node [below] {$Q$};
+\draw [thick] (0,5) to [out = -75, in = 150] (3,0.8) 
+	to [out = -30, in = 165] (5,0);
+\draw [ultra thick, dashed]	(0, 0.8) node [left] {$P^* = .8$} 
+	-- (3, 0.8) -- (3,0) node [below] {$Q^* = 3$};
+\draw [fill] (3, 0.8) circle [radius = 0.1];
+\end{tikzpicture}
+
+\begin{lstlisting}
+\begin{tikzpicture}
+\path [fill = yellow] (0,0) to (0,5)
+	to [out = -75, in = 150] (3,0.8) -- (3,0) -- (0,0); 
+\draw [thick, <->] (0,6) node [left] {$P$}
+	-- (0,0) node [below left] {$(0,0)$} 
+	-- (6,0) node [below] {$Q$};
+\draw [thick] (0,5) to [out = -75, in = 150] (3,0.8) 
+	to [out = -30, in = 165] (5,0);
+\draw [ultra thick, dashed] (0, 0.8) node [left] {$P^* = .8$} 
+	-- (3, 0.8) -- (3,0) node [below] {$Q^* = 3$};
+\draw [fill] (3, 0.8) circle [radius = 0.1];
+\end{tikzpicture}
+\end{lstlisting}
+
+\subsection{Lots of curves} % (fold)
+\label{sub:lots_of_curves}
+
+\begin{tikzpicture}[domain = 0:0.5, xscale = 13, yscale = 4]
+\draw [<->] (0, 1.5) node [left] {\textsc{eur}} -- (0,0) -- (0.6, 0) node [below] {$q$};
+\draw [red] plot (\x, {0.25+\x/2 + \x*\x/2}) node [right] {$v_1(x)$};
+\draw [blue] plot (\x, {0.025 + \x + \x*\x}) node [right] {$v_2(x)$};
+\draw [thin, dashed] plot (\x, {0.275 + 1.5*\x + 1.5*\x *\x});
+\draw [thick, domain = 0:0.33666] plot (\x, {0.05+2*\x + 2*\x*\x});
+\draw [thick, domain = 0.33666:0.5] plot (\x, 0.5 + \x + \x*\x) node [right] {$2 \text{ min}\left[ v_1, v_2 \right] $};
+\end{tikzpicture}
+\begin{lstlisting}
+\begin{tikzpicture}[domain = 0:0.5, xscale = 13, yscale = 4]
+\draw [<->] (0, 2) node [left] {\textsc{eur}} 
+	-- (0,0) -- (0.7, 0) node [below] {$q$};
+\draw [red] plot (\x, {0.25+\x/2 + \x*\x/2}) node [right] {$v_1(x)$};
+\draw [blue] plot (\x, {0.025 + \x + \x*\x}) node [right] {$v_2(x)$};
+\draw [thin, dashed] plot (\x, {0.275 + 1.5*\x + 1.5*\x *\x});
+\draw [thick, domain = 0:0.33666] plot (\x, {0.05+2*\x + 2*\x*\x});
+\draw [thick, domain = 0.33666:0.5] plot (\x, 0.5 + \x + \x*\x) 
+	node [right] {$2 \text{ min}\left[ v_1, v_2 \right] $};
+\end{tikzpicture}
+\end{lstlisting}
+
+\subsection{Simple block diagram} % (fold)
+\label{sub:simple_block_diagram}
+
+\usetikzlibrary{shapes,arrows,backgrounds,positioning}
+
+\tikzset{
+block/.style = {
+	rectangle,
+	thick,
+	draw,
+	text width = 3 em,
+	text centered,
+	minimum height = 3 em,
+	fill = blue!20
+	},
+line/.style = {
+	->, thick
+	},
+init/.style = {
+	pin edge = {to-,
+	thick,
+	black}
+}	
+}
+
+% \tikzstyle{block} = [rectangle, draw, text width = 2 em, 
+% 					text centered, fill = blue!20,
+% 					minimum height = 2 em]
+% \tikzstyle{line} = [draw, ->]
+
+\begin{tikzpicture}[node distance = 2cm, auto, >=latex']
+\node [block, pin = {[init]above:$v_0$}] (a) {$\dfrac{1}{s}$};
+\node [left = of a, node distance = 2cm, coordinate] (begin) {};
+\node [block, pin = {[init]above:$p_0$}, right = of a] (c)  {$\dfrac{1}{s}$};
+\node [right = of c, node distance = 2cm, coordinate] (end) {};
+\path [line] (begin) edge node {$a$} (a);
+\path [line] (a) edge node {$v$} (c);
+\path [line] (c) edge node {$p$} (end);
+
+% \node [block] (1/s1) {$\dfrac{1}{s}$};
+
+% \node [block, right = of 1/s1] (1/s2) {$\dfrac{1}{s}$};
+% \path [line] (1/s1) -- (1/s2);
+\end{tikzpicture}
+
+
+
+
+
+
+% \begin{tikzpicture}
+% \draw [thick, ->] (0,0) to (2,0);
+% \node [above] at (1, 0.1) {$a$};
+% \draw [fill = blue!20] (2, -0.5) rectangle (3, 0.5); 
+% \node [center] at (2.5, 0) {$frac{1}{s}$};
+% \draw [thick, ->] (3,0) to (6,0);
+% \node [above] at (4.5, 0.1) {$v$};
+% \draw [fill = blue!20] (6, -0.5) rectangle (7, 0.5);
+% \draw [thick, ->] (7,0) to (9,0);
+% \node [above] at (8, 0.1) {$p$};
+% \end{tikzpicture}
+
+
+% subsection simple_block_diagram (end)
+
+
 \end{document}
 
