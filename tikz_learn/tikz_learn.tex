@@ -289,7 +289,7 @@ Lots of anchor points can be specified explicitly to make a smoother curve.
 
 \vspace{1em}\noindent
 \begin{tikzpicture}[xscale=25,yscale=5]
-\draw [<->, help lines] (0.6,1.34) -- (0.6,1) -- (1.05,1);
+\draw [<->] (0.6,1.34) -- (0.6,1) -- (1.05,1);
 \draw[orange, thick] (0.6, 1.0385) --
 (0.61, 1.06372) -- (0.62, 1.08756) -- (0.63, 1.11012) -- 
 (0.64,1.13147) -- (0.65, 1.15166) -- (0.66, 1.17074) -- 
@@ -317,7 +317,7 @@ Lots of anchor points can be specified explicitly to make a smoother curve.
 \end{tikzpicture}
 \begin{lstlisting}
 \begin{tikzpicture}[xscale=25,yscale=5]
-\draw [<->, help lines] (0.6,1.34) -- (0.6,1) -- (1.05,1);
+\draw [<->] (0.6,1.34) -- (0.6,1) -- (1.05,1);
 \draw[orange, thick] (0.6, 1.0385) --
 (0.61, 1.06372) -- (0.62, 1.08756) -- (0.63, 1.11012) -- 
 (0.64,1.13147) -- (0.65, 1.15166) -- (0.66, 1.17074) -- 
@@ -339,13 +339,13 @@ A simpler way to draw a curve is to specify the inlet and exit points, and the i
 
 \begin{tikzpicture}[baseline = (current bounding box.east)]
 \draw[very thick] (0,0) to [out=90,in=-90] (2,1.5);
-\draw[gray] (0,0) grid (2,2);
+\draw[help lines] (0,0) grid (2,2);
 \end{tikzpicture}
 &
 \begin{lstlisting}
 \begin{tikzpicture}
 \draw[very thick] (0,0) to [out=90,in=195] (2,1.5);
-\draw[gray] (0,0) grid (2,2);
+\draw[help lines] (0,0) grid (2,2);
 \end{tikzpicture}
 \end{lstlisting}
 \end{tabular}
@@ -359,12 +359,12 @@ To decipher the angles,
 \noindent
 \begin{tikzpicture}
 \draw [<->, thick, blue] (0,0) to [out = 90, in = 90] (1,1) [out = -90, in = -90] to (3,0) to [out = 90, in = 180] (4,1);
-\draw [gray] (0,0) grid (4,1);
+\draw [help lines] (0,0) grid (4,1);
 \end{tikzpicture}
 \begin{lstlisting}
 \begin{tikzpicture}
 \draw [<->, thick, blue] (0,0) to [out = 90, in = 90] (1,1) [out = -90, in = -90] to (3,0) to [out = 90, in = 180] (4,1);
-\draw [gray] (0,0) grid (4,1);
+\draw [help lines] (0,0) grid (4,1);
 \end{tikzpicture}
 \end{lstlisting}
 
@@ -389,22 +389,54 @@ Available functions include {\small \texttt{factorial(\textbackslash x)}, \textt
 
 \vspace{1em}\noindent
 \begin{tikzpicture}[yscale=1.5]
-\draw [gray, thick, ->] (0,0) -- (6.5,0);
-\draw [gray, thick, <->] (0,-1.1) -- (0,1.1);
+\draw [->] (0,0) -- (6.5,0);
+\draw [<->] (0,-1.1) -- (0,1.1);
 \draw [green,domain=0:2*pi, thick] plot (\x, {(sin(\x r)* ln(\x+1))/2});
 \draw [red,domain=0:pi, thick] plot (\x, {sin(\x r)});
 \draw [blue, domain=pi:2*pi, thick] plot (\x, {cos(\x r)*exp(\x/exp(2*pi))});
 \end{tikzpicture}
 \begin{lstlisting}
 \begin{tikzpicture}[yscale=1.5]
-\draw [gray, thick, ->] (0,0) -- (6.5,0);
-\draw [gray, thick, <->] (0,-1.1) -- (0,1.1);
+\draw [->] (0,0) -- (6.5,0);
+\draw [<->] (0,-1.1) -- (0,1.1);
 \draw [green,domain=0:2*pi] plot (\x, {(sin(\x r)* ln(\x+1))/2});
 \draw [red,domain=0:pi] plot (\x, {sin(\x r)});
 \draw [blue, domain=pi:2*pi] 
 plot (\x, {cos(\x r)*exp(\x/exp(2*pi))});
 \end{tikzpicture}
 \end{lstlisting}
+
+\vspace{1em}\noindent
+\begin{tabular}{p{4cm}l}
+\begin{tikzpicture}[baseline = (current bounding box.east)]
+\draw [ycomb, color = blue!20, line width = 0.5 cm]
+	plot coordinates{(1,1) (2,2) (3,3)};
+\draw (1, -0.1) node [below] {1} -- (1, 0.1)
+	(2, -0.1) node [below] {2} -- (2, 0.1)
+	(3, -0.1) node [below] {3} -- (3, 0.1);
+\foreach \i in {1,2,3}
+\draw  (-0.1, \i) node [left] {\i} -- (0.1, \i);
+\draw [<->] (0,3.5) node [above] {$y$} 
+			-- (0,0) 
+			-- (3.5,0) node [right] {$x$} ;
+\end{tikzpicture}
+&
+\begin{lstlisting}
+\begin{tikzpicture}
+\draw [ycomb, color = blue!20, line width = 0.5 cm]
+	plot coordinates{(1,1) (2,2) (3,3)};
+\draw (1, -0.1) node [below] {1} -- (1, 0.1)
+	(2, -0.1) node [below] {2} -- (2, 0.1)
+	(3, -0.1) node [below] {3} -- (3, 0.1);
+\foreach \i in {1,2,3}
+\draw  (-0.1, \i) node [left] {\i} -- (0.1, \i);
+\draw [<->] (0,3.5) node [above] {$y$} 
+			-- (0,0) 
+			-- (3.5,0) node [right] {$x$} ;
+\end{tikzpicture}
+\end{lstlisting}
+\end{tabular}
+
 
 \section{Filling areas} % (fold)
 \label{sec:filling_areas}
@@ -513,13 +545,13 @@ Compound positioning is also possible,
 
 \vspace{1em}
 \noindent
-\begin{tikzpicture}[scale = 2.0]
-\draw [thick, <->] (0,2) -- (0,0) --(2,0);
-\draw [fill] (1,1) circle [radius = 0.025];
-\node [below right, red] at (1,1) {below right};
-\node [above left, green] at (1,1) {above left};
-\node [below left, blue] at (1,1) {below left};
-\node [above right, cyan] at (1,1) {above right};
+\begin{tikzpicture}[scale = 2]
+\draw [thick, <->] (0,1) -- (0,0) --(2,0);
+\draw [fill] (1,0.5) circle [radius = 0.025];
+\node [below right, red] at (1,0.5) {below right};
+\node [above left, green] at (1,0.5) {above left};
+\node [below left, blue] at (1,0.5) {below left};
+\node [above right, cyan] at (1,0.5) {above right};
 \end{tikzpicture}
 \begin{lstlisting}
 \begin{tikzpicture}[scale = 2.0]
@@ -615,7 +647,7 @@ Multiple lines can be added to nodes with \textbackslash\textbackslash, but alig
 
 \section{Naming coordinates} % (fold)
 \label{sec:naming_coordinates}
-Coordinates can be named with the path command. Non-contiguous line segments can be drawn by omitting the \texttt{-}\texttt{-} command.
+Coordinates can be named with the \texttt{\textbackslash path\dots\textbackslash coordinate} command. Non-contiguous line segments can be drawn by omitting the \texttt{-}\texttt{-} command.
 
 \noindent
 \begin{tabular}{p{3cm}l}
@@ -690,13 +722,12 @@ every node/.style = {circle, thick, draw, text centered,
 \section{Looping} % (fold)
 \label{sec:looping}
 \begin{tabular}{p{3cm}l}
-\begin{tikzpicture}[baseline = (current bounding box.east)]
 
+\begin{tikzpicture}[baseline = (current bounding box.east)]
 \foreach \j in {0,...,2}
-\foreach \i in {0,...,2}
-{
+\foreach \i in {0,...,2}{
 	\path (\i,\j) coordinate (x\i\j);
-	\fill (x\i\j) circle (1.5pt) node [below] {x\i\j};
+	\fill (x\i\j) circle (1.5pt) node [below] {\i,\j};
 }
 \end{tikzpicture}
 &
@@ -705,8 +736,7 @@ every node/.style = {circle, thick, draw, text centered,
 \foreach \j in {0,...,2}
 \foreach \i in {0,...,2}{
 	\path (\i,\j) coordinate (x\i\j);
-	\fill (x\i\j) circle (1.5pt) 
-		node [below] {x\i\j};
+	\fill (x\i\j) circle (1.5pt) node [below] {\i,\j};
 }
 \end{tikzpicture}
 \end{lstlisting}
@@ -733,10 +763,11 @@ every node/.style = {circle, thick, draw, text centered,
 	\fill (X\i) circle (1pt);
 	\path (\j,1) coordinate (Y\j);
 	\fill (Y\j) circle (1pt);
-}
+} % Naming coordinates and putting circles
 \foreach \i in {1,...,4}
 \foreach \j in {1,...,4}
 	\draw (X\i) -- (Y\j);
+	% Drawing connections
 \end{tikzpicture}
 \end{lstlisting}
 \end{tabular}
@@ -861,7 +892,6 @@ every node/.style = {circle, thick, draw, text centered,
 	-- (3, 0.8) -- (3,0) node [below] {$Q^* = 3$};
 \draw [fill] (3, 0.8) circle [radius = 0.1];
 \end{tikzpicture}
-
 \begin{lstlisting}
 \begin{tikzpicture}
 \path [fill = yellow] (0,0) to (0,5)
@@ -876,6 +906,7 @@ every node/.style = {circle, thick, draw, text centered,
 \draw [fill] (3, 0.8) circle [radius = 0.1];
 \end{tikzpicture}
 \end{lstlisting}
+
 
 \subsection{Lots of curves} % (fold)
 \label{sub:lots_of_curves}
@@ -913,28 +944,29 @@ line/.style = {draw, ->, thick, >=stealth},
 init/.style = {pin edge = {to-, thick, black}}	
 }
 
-\node [block, pin = {[init]above:$v_0$}] (a) {$\dfrac{1}{s}$};
+\node [block, pin = {[init] above:$v_0$}] (a) {$\dfrac{1}{s}$};
 \node [left = of a, node distance = 2cm, coordinate] (begin) {};
-\node [block, pin = {[init]above:$p_0$}, right = of a] (c)  {$\dfrac{1}{s}$};
+\node [block, pin = {[init] above:$p_0$}, right = of a] (c)  {$\dfrac{1}{s}$};
 \node [right = of c, node distance = 2cm, coordinate] (end) {};
 \path [line] (begin) -- node {$a$} (a);
 \path [line] (a) -- node {$v$} (c);
 \path [line] (c) -- node {$p$} (end);
 \end{tikzpicture}
 \begin{lstlisting}
-\begin{tikzpicture}[node distance = 2cm, auto]
-\tikzset{
+\begin{tikzpicture}[node distance = 2cm, auto]\tikzset{
 block/.style = {rectangle, thick, draw,
-	text width = 3 em, text centered, 
-	minimum height = 3 em, fill = blue!20},
+		text width = 3 em, text centered, 
+		minimum height = 3 em, fill = blue!20},
 line/.style = {draw, ->, thick, >=stealth},
-init/.style = {pin edge = {to-, thick, black}}	
-}
+init/.style = {pin edge = {to-, thick, black}}}
 
-\node [block, pin = {[init]above:$v_0$}] (a) {$\dfrac{1}{s}$};
+\node [block, pin = {[init] above:$v_0$}] 
+	(a) {$\dfrac{1}{s}$};
 \node [left = of a, node distance = 2cm, coordinate] (begin) {};
-\node [block, pin = {[init]above:$p_0$}, right = of a] (c)  {$\dfrac{1}{s}$};
+\node [block, pin = {[init] above:$p_0$}, right = of a] 
+	(c) {$\dfrac{1}{s}$};
 \node [right = of c, node distance = 2cm, coordinate] (end) {};
+
 \path [line] (begin) -- node {$a$} (a);
 \path [line] (a) -- node {$v$} (c);
 \path [line] (c) -- node {$p$} (end);
@@ -942,26 +974,65 @@ init/.style = {pin edge = {to-, thick, black}}
 \end{lstlisting}
 
 
+\subsection{Yin-yang} % (fold)
+\label{sub:yin_yang}
+\begin{tabular}{p{3cm}l}
+
+\begin{tikzpicture}[scale = 1, baseline = (current bounding box.east)]
+\draw (0,0) circle [radius = 1];
+\clip (0,0) circle [radius = 1];
+\draw [fill] (-1, -1) rectangle (0,1);
+
+\draw [fill] (0, 0.5) circle [radius = 0.5];
+\draw [fill, white] (0, -0.5) circle [radius = 0.5];
+\draw [fill] (0, -0.5) circle [radius = 0.1];
+\draw [fill, white] (0,0.5) circle [radius = 0.1];
+\end{tikzpicture}
+&
+\begin{lstlisting}
+\begin{tikzpicture}[scale = 1]
+\draw (0,0) circle [radius = 1];
+\clip (0,0) circle [radius = 1];
+\draw [fill] (-1, -1) rectangle (0,1);
+
+\draw [fill] (0, 0.5) circle [radius = 0.5];
+\draw [fill, white] (0, -0.5) circle [radius = 0.5];
+\draw [fill] (0, -0.5) circle [radius = 0.1];
+\draw [fill, white] (0,0.5) circle [radius = 0.1];
+\end{tikzpicture}
+\end{lstlisting}
+\end{tabular}
+
+\subsection{Set intersection} % (fold)
+\label{sub:set_intersection}
+\begin{tabular}{p{3cm}l}
+
+\begin{tikzpicture}[scale = 0.75, baseline = (current bounding box.east)]
+\draw (-2, 1.5) rectangle (2, -1.5);
+\draw (-0.5, 0) circle [radius = 1 cm];
+\draw (0.5, 0) circle [radius = 1 cm];
+\clip (-0.5, 0) circle [radius = 1 cm];
+\clip (0.5, 0) circle [radius = 1 cm];
+\draw [fill, blue!20] (-2, 1.5) rectangle (2, -1.5);
+\end{tikzpicture}
+&
+\begin{lstlisting}
+\begin{tikzpicture}[scale = 0.75]
+\draw (-2, 1.5) rectangle (2, -1.5);
+\draw (-0.5, 0) circle [radius = 1 cm];
+\draw (0.5, 0) circle [radius = 1 cm];
+\clip (-0.5, 0) circle [radius = 1 cm];
+\clip (0.5, 0) circle [radius = 1 cm];
+\draw [fill, blue!20] (-2, 1.5) rectangle (2, -1.5);
+\end{tikzpicture}
+\end{lstlisting}
+\end{tabular}
+% subsection set_intersection (end)
 
 
 
 
-
-% \begin{tikzpicture}
-% \draw [thick, ->] (0,0) to (2,0);
-% \node [above] at (1, 0.1) {$a$};
-% \draw [fill = blue!20] (2, -0.5) rectangle (3, 0.5); 
-% \node [center] at (2.5, 0) {$frac{1}{s}$};
-% \draw [thick, ->] (3,0) to (6,0);
-% \node [above] at (4.5, 0.1) {$v$};
-% \draw [fill = blue!20] (6, -0.5) rectangle (7, 0.5);
-% \draw [thick, ->] (7,0) to (9,0);
-% \node [above] at (8, 0.1) {$p$};
-% \end{tikzpicture}
-
-
-% subsection simple_block_diagram (end)
-
+% subsubsection yin_yang (end)
 
 \end{document}
 
