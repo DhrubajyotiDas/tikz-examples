@@ -1,5 +1,4 @@
-\documentclass[letterpaper, headinclude,
-fontsize = 11pt, footinclude = true]{article}
+\documentclass[letterpaper, headinclude, footinclude = true]{article}
 \PassOptionsToPackage{noopticals}{MinionPro}
 \usepackage[minionprospacing, nochapters, beramono, listings, minionpro]{classicthesis}
 \usepackage{amsmath}
@@ -9,6 +8,7 @@ fontsize = 11pt, footinclude = true]{article}
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{tikz}
+
 
 
 \usepackage{listings}
@@ -30,6 +30,8 @@ fontsize = 11pt, footinclude = true]{article}
     belowcaptionskip=.75\baselineskip
     %frame=L
 } 
+
+\usetikzlibrary{shapes,arrows,backgrounds,positioning}
 
  
 
@@ -611,6 +613,139 @@ Multiple lines can be added to nodes with \textbackslash\textbackslash, but alig
 \end{tikzpicture}
 \end{lstlisting}
 
+\section{Naming coordinates} % (fold)
+\label{sec:naming_coordinates}
+Coordinates can be named with the path command. Non-contiguous line segments can be drawn by omitting the \texttt{-}\texttt{-} command.
+
+\noindent
+\begin{tabular}{p{3cm}l}
+
+\begin{tikzpicture}[baseline = (current bounding box.east)]
+\path (0,0) coordinate (origin);
+\path (0*72:1 cm) coordinate (P0);
+\path (1*72:1 cm) coordinate (P1);
+\path (2*72:1 cm) coordinate (P2);
+\path (3*72:1 cm) coordinate (P3);
+\path (4*72:1 cm) coordinate (P4);
+
+\draw [thick] (P0) -- (P1) -- (P2) -- (P3) -- (P4) -- cycle;
+\draw (origin) -- (P0) (origin) -- (P1) (origin) -- 
+		(P2) (origin) -- (P3) (origin) -- (P4);
+\end{tikzpicture}
+&
+\begin{lstlisting}
+\begin{tikzpicture}
+\path (0,0) coordinate (origin);
+\path (0*72:1 cm) coordinate (P0);
+\path (1*72:1 cm) coordinate (P1);
+\path (2*72:1 cm) coordinate (P2);
+\path (3*72:1 cm) coordinate (P3);
+\path (4*72:1 cm) coordinate (P4);
+
+\draw [thick] (P0) -- (P1) -- (P2) -- (P3) -- (P4) -- cycle;
+\draw (origin) -- (P0) (origin) -- (P1) (origin) -- (P2)
+	(origin) -- (P3) (origin) -- (P4);
+\end{tikzpicture}	
+\end{lstlisting}
+\end{tabular}
+
+\section{More nodes} % (fold)
+\label{sec:more_nodes}
+\begin{tabular}{p{3cm}l}
+\begin{tikzpicture}[baseline = (current bounding box.east)]
+\tikzset{
+every node/.style = {circle, thick, draw, text centered,
+					fill = blue!20}
+}
+
+\path (0:0 cm) node (v0) {$v_0$};
+\path (0*72:1 cm) node (v1) {$v_1$};
+\path (1*72:1 cm) node (v2) {$v_2$};
+\path (2*72:1 cm) node (v3) {$v_3$};
+\path (3*72:1 cm) node (v4) {$v_4$};
+\path (4*72:1 cm) node (v5) {$v_5$};
+
+\draw (v0) -- (v1) (v0) -- (v2) (v0) -- (v3)
+	(v0) -- (v4) (v0) -- (v5);
+\end{tikzpicture}
+&
+\begin{lstlisting}
+\begin{tikzpicture}\tikzset{
+every node/.style = {circle, thick, draw, text centered,
+					fill = blue!20}}
+
+\path (0:0 cm) node (v0) {$v_0$};
+\path (0*72:1 cm) node (v1) {$v_1$};
+\path (1*72:1 cm) node (v2) {$v_2$};
+\path (2*72:1 cm) node (v3) {$v_3$};
+\path (3*72:1 cm) node (v4) {$v_4$};
+\path (4*72:1 cm) node (v5) {$v_5$};
+
+\draw (v0) -- (v1) (v0) -- (v2) (v0) -- (v3)
+	(v0) -- (v4) (v0) -- (v5);
+\end{tikzpicture}
+\end{lstlisting}
+\end{tabular}
+
+\section{Looping} % (fold)
+\label{sec:looping}
+\begin{tabular}{p{3cm}l}
+\begin{tikzpicture}[baseline = (current bounding box.east)]
+
+\foreach \j in {0,...,2}
+\foreach \i in {0,...,2}
+{
+	\path (\i,\j) coordinate (x\i\j);
+	\fill (x\i\j) circle (1.5pt) node [below] {x\i\j};
+}
+\end{tikzpicture}
+&
+\begin{lstlisting}
+\begin{tikzpicture}
+\foreach \j in {0,...,2}
+\foreach \i in {0,...,2}{
+	\path (\i,\j) coordinate (x\i\j);
+	\fill (x\i\j) circle (1.5pt) 
+		node [below] {x\i\j};
+}
+\end{tikzpicture}
+\end{lstlisting}
+\end{tabular}
+
+\vspace{1em}\noindent
+\begin{tabular}{p{3cm}l}
+\begin{tikzpicture}[yscale = 2, baseline = (current bounding box.east)]
+\foreach \i / \j in {{1/1}, {2/2}, {3/3}, {4/4}}{
+	\path (\i,0) coordinate (X\i);
+	\fill (X\i) circle (1pt);
+	\path (\j,1) coordinate (Y\j);
+	\fill (Y\j) circle (1pt);
+}
+\foreach \i in {1,...,4}
+\foreach \j in {1,...,4}
+	\draw (X\i) -- (Y\j);
+\end{tikzpicture}
+&	
+\begin{lstlisting}
+\begin{tikzpicture}[yscale=2]
+\foreach \i / \j in {{1/1}, {2/2}, {3/3}, {4/4}}{
+	\path (\i,0) coordinate (X\i);
+	\fill (X\i) circle (1pt);
+	\path (\j,1) coordinate (Y\j);
+	\fill (Y\j) circle (1pt);
+}
+\foreach \i in {1,...,4}
+\foreach \j in {1,...,4}
+	\draw (X\i) -- (Y\j);
+\end{tikzpicture}
+\end{lstlisting}
+\end{tabular}
+
+
+
+
+% section looping (end)
+
 \section{Examples} % (fold)
 \label{sec:examples}
 
@@ -769,47 +904,43 @@ Multiple lines can be added to nodes with \textbackslash\textbackslash, but alig
 \subsection{Simple block diagram} % (fold)
 \label{sub:simple_block_diagram}
 
-\usetikzlibrary{shapes,arrows,backgrounds,positioning}
-
+\begin{tikzpicture}[node distance = 2cm, auto]
 \tikzset{
-block/.style = {
-	rectangle,
-	thick,
-	draw,
-	text width = 3 em,
-	text centered,
-	minimum height = 3 em,
-	fill = blue!20
-	},
-line/.style = {
-	->, thick
-	},
-init/.style = {
-	pin edge = {to-,
-	thick,
-	black}
-}	
+block/.style = {rectangle, thick, draw,
+	text width = 3 em, text centered, 
+	minimum height = 3 em, fill = blue!20},
+line/.style = {draw, ->, thick, >=stealth},
+init/.style = {pin edge = {to-, thick, black}}	
 }
 
-% \tikzstyle{block} = [rectangle, draw, text width = 2 em, 
-% 					text centered, fill = blue!20,
-% 					minimum height = 2 em]
-% \tikzstyle{line} = [draw, ->]
-
-\begin{tikzpicture}[node distance = 2cm, auto, >=latex']
 \node [block, pin = {[init]above:$v_0$}] (a) {$\dfrac{1}{s}$};
 \node [left = of a, node distance = 2cm, coordinate] (begin) {};
 \node [block, pin = {[init]above:$p_0$}, right = of a] (c)  {$\dfrac{1}{s}$};
 \node [right = of c, node distance = 2cm, coordinate] (end) {};
-\path [line] (begin) edge node {$a$} (a);
-\path [line] (a) edge node {$v$} (c);
-\path [line] (c) edge node {$p$} (end);
-
-% \node [block] (1/s1) {$\dfrac{1}{s}$};
-
-% \node [block, right = of 1/s1] (1/s2) {$\dfrac{1}{s}$};
-% \path [line] (1/s1) -- (1/s2);
+\path [line] (begin) -- node {$a$} (a);
+\path [line] (a) -- node {$v$} (c);
+\path [line] (c) -- node {$p$} (end);
 \end{tikzpicture}
+\begin{lstlisting}
+\begin{tikzpicture}[node distance = 2cm, auto]
+\tikzset{
+block/.style = {rectangle, thick, draw,
+	text width = 3 em, text centered, 
+	minimum height = 3 em, fill = blue!20},
+line/.style = {draw, ->, thick, >=stealth},
+init/.style = {pin edge = {to-, thick, black}}	
+}
+
+\node [block, pin = {[init]above:$v_0$}] (a) {$\dfrac{1}{s}$};
+\node [left = of a, node distance = 2cm, coordinate] (begin) {};
+\node [block, pin = {[init]above:$p_0$}, right = of a] (c)  {$\dfrac{1}{s}$};
+\node [right = of c, node distance = 2cm, coordinate] (end) {};
+\path [line] (begin) -- node {$a$} (a);
+\path [line] (a) -- node {$v$} (c);
+\path [line] (c) -- node {$p$} (end);
+\end{tikzpicture}
+\end{lstlisting}
+
 
 
 
