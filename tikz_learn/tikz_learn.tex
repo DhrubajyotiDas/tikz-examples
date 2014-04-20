@@ -1027,8 +1027,30 @@ init/.style = {pin edge = {to-, thick, black}}}
 \end{tikzpicture}
 \end{lstlisting}
 \end{tabular}
-% subsection set_intersection (end)
 
+\subsection{Even odd rule} % (fold)
+\label{sub:even_odd_rule}
+\begin{tabular}{p{3cm}l}
+
+\begin{tikzpicture}[even odd rule, rounded corners, 
+					x = 1em, y = 1em, scale = 2,
+					baseline = (current bounding box.east)]
+	\filldraw[fill = blue!50]  		 (0,0) rectangle (1,1)
+	[xshift = 0.5em, yshift = 0.5em] (0,0) rectangle (1,1)
+	(-1.5,-1.5) rectangle (2,2);
+\end{tikzpicture}
+&
+\begin{lstlisting}
+\begin{tikzpicture}[even odd rule, rounded corners, 
+			x = 1em, y = 1em, scale = 2]
+\filldraw[fill = blue!50] (0,0) rectangle (1,1)
+[xshift = 0.5em, yshift = 0.5em] (0,0) rectangle (1,1)
+(-1.5,-1.5) rectangle (2,2);
+\end{tikzpicture}
+\end{lstlisting}
+\end{tabular}
+
+% subsection even_odd_rule (end)
 
 
 

@@ -37,7 +37,7 @@
 \draw [->] (0, -1.5) -- (0, 1.5);
 \draw (0,0) circle [radius = 1 cm];
 
-\filldraw[fill = green!20, draw = green!80] 
+\filldraw[fill = green!20, draw = green!50!blue] 
 	(0,0) -- (0.3, 0) arc [start angle = 0, end angle = 30, radius = 3 mm] -- cycle;
 
 \draw [red, very thick] (30:1)	-- +(0, -0.5);
@@ -48,7 +48,14 @@
 \draw [name intersections = {of = upward line and slanted line, by = x}] [very thick, orange] (1,0) -- (x);
 
 
+\end{tikzpicture}
 
+
+\begin{tikzpicture}[even odd rule, rounded corners = 2pt, 
+                    x = 10pt, y = 10pt]
+    \filldraw[fill = yellow!80!black] (0,0)     rectangle (1,1)
+         [xshift = 5pt, yshift = 5pt] (0,0)     rectangle (1,1);
+                        %[rotate = 30] (-1, -1)  rectangle (2,2);
 \end{tikzpicture}
 
 
