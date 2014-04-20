@@ -1,11 +1,12 @@
 \documentclass[letterpaper, headinclude, footinclude = true]{article}
 \usepackage{tikz}
-\PassOptionsToPackage{noopticals}{MinionPro}
+\PassOptionsToPackage{noopticals, mathlf}{MinionPro}
 \usepackage[minionprospacing, nochapters, beramono, listings, minionpro]{classicthesis}
-\usepackage{amsmath}
+%\DeclareOption{eulermath}{\setboolean{@eulermath}{false}} 
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{listings}
+\usepackage[margin = 1in]{geometry}
 
 \lstset{language=[LaTeX]Tex,%C++,
     keywordstyle=\color{RoyalBlue},%\bfseries,
@@ -30,33 +31,68 @@
 
 \begin{document}
 
-\begin{tikzpicture}[scale = 3, >=stealth],
-\clip (-0.1, -0.2) rectangle (1.1, 1.5);
+\begin{tikzpicture}[scale = 3, line cap = round, >=stealth,
+% Styles
+axes/.style = ,
+important line/.style = {very thick},
+information text/.style = {rounded corners, fill = red!10, inner sep = 1ex}]
+
+% Colors
+\colorlet{anglecolor}{green!50!blue}
+\colorlet{sincolor}{red}
+\colorlet{tancolor}{orange!90!black}
+\colorlet{coscolor}{blue}
+
+% The graphic
 \draw [help lines, step = 0.5cm] (-1.4, -1.4) grid (1.4, 1.4);
-\draw [->] (-1.5,0) -- (1.5, 0);
-\draw [->] (0, -1.5) -- (0, 1.5);
+
 \draw (0,0) circle [radius = 1 cm];
 
-\filldraw[fill = green!20, draw = green!50!blue] 
-	(0,0) -- (0.3, 0) arc [start angle = 0, end angle = 30, radius = 3 mm] -- cycle;
+\begin{scope}[axes]
+    \draw [->] (-1.5, 0) -- (1.5, 0) node [right] {$x$} coordinate (x axis);
+    \draw [->] (0, -1.5) -- (0, 1.5) node [above] {$y$} coordinate (y axis);
 
-\draw [red, very thick] (30:1)	-- +(0, -0.5);
-\draw [blue, very thick] (30:1 |- 0,0) -- (0,0);
+    \foreach \x / \xmath in {-1, -0.5 / -\frac{1}{2}, 1}
+        \draw (\x, 1pt) -- (\x, -1pt) node [below, fill = white] {$\xmath$};
+    \foreach \y / \ymath in {-1, -0.5/ -\frac{1}{2} , 0.5 / \frac{1}{2}, 1}    
+        \draw (1pt, \y) -- (-1pt, \y) node [left, fill = white] {$\ymath$};
+\end{scope}
+
+\filldraw[fill = green!20, draw = anglecolor] (0,0) -- (0.3, 0)
+    arc [start angle = 0, end angle = 30, radius = 3 mm] -- cycle;
+\draw (15:2mm) node [anglecolor] {$\alpha$};
+
+\draw[important line, sincolor]
+    (30:1)	-- node[left, fill = white] {$\sin\alpha$} (30:1 |- x axis);
+
+\draw[important line, coscolor]
+    (0,0)  -- node[below, fill = white] {$\cos\alpha$} (30:1 |- x axis);    
 
 \path [name path = upward line] (1,0) -- (1,1);
 \path [name path = slanted line] (0,0) -- (30:2);
-\draw [name intersections = {of = upward line and slanted line, by = x}] [very thick, orange] (1,0) -- (x);
+\draw [important line, tancolor,
+        name intersections = {of = upward line and slanted line, by = t}] 
+        (1,0) -- node [right, fill = white] {$\tan\alpha \color{black} = \dfrac{\color{red}\sin\alpha}{\color{blue}\cos\alpha}$} (t);
+
+\draw (0,0) -- (t);
+
+% Informational text
+
+\draw[xshift = 1.85 cm]
+    node [right, text width = 6 cm, information text]
+    {
+        The {\color{anglecolor} angle $\alpha$} is $30^\circ$ in the example ($\pi/6$ in radians). The {\color{sincolor} sine of $\alpha$}, which is the height of the red line, is \[{\color{sincolor} \sin \alpha} = \frac{1}{2}.\]
+        By the Theorem of Pythagoras we have {\color{coscolor} $\cos^2\alpha$} + {\color{sincolor} $\sin^2 \alpha$} = 1. Thus the length of the blue line, which is the {\color{coscolor} cosine of $\alpha$}, must be \[{\color{coscolor} \cos \alpha} = \sqrt{1-\frac{1}{4}} = \frac{1}{2}\sqrt{3}.\]
+        This shows that {\color{tancolor} $\tan \alpha$}, which is the height of the orange line, is \[{\color{tancolor} \tan \alpha} = \frac{\color{sincolor}\sin \alpha}{\color{coscolor}\cos\alpha} = \frac{1}{\sqrt{3}}.\]
+    };
+
+
 
 
 \end{tikzpicture}
+ 
 
 
-\begin{tikzpicture}[even odd rule, rounded corners = 2pt, 
-                    x = 10pt, y = 10pt]
-    \filldraw[fill = yellow!80!black] (0,0)     rectangle (1,1)
-         [xshift = 5pt, yshift = 5pt] (0,0)     rectangle (1,1);
-                        %[rotate = 30] (-1, -1)  rectangle (2,2);
-\end{tikzpicture}
 
 
 

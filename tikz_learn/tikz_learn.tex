@@ -1,5 +1,5 @@
 \documentclass[letterpaper, headinclude, footinclude = true]{article}
-\PassOptionsToPackage{noopticals}{MinionPro}
+\PassOptionsToPackage{noopticals, mathlf}{MinionPro}
 \usepackage[minionprospacing, nochapters, beramono, listings, minionpro]{classicthesis}
 \usepackage{amsmath}
 \usepackage[T1]{fontenc}
@@ -727,7 +727,8 @@ every node/.style = {circle, thick, draw, text centered,
 \foreach \j in {0,...,2}
 \foreach \i in {0,...,2}{
 	\path (\i,\j) coordinate (x\i\j);
-	\fill (x\i\j) circle (1.5pt) node [below] {\i,\j};
+	%\draw (\i, \j) node {$\i,\j$} +(-.5, -.5) rectangle +(.5, .5);
+	\fill (x\i\j) circle (1.5pt) node [below] {\i, \j};
 }
 \end{tikzpicture}
 &
@@ -736,7 +737,7 @@ every node/.style = {circle, thick, draw, text centered,
 \foreach \j in {0,...,2}
 \foreach \i in {0,...,2}{
 	\path (\i,\j) coordinate (x\i\j);
-	\fill (x\i\j) circle (1.5pt) node [below] {\i,\j};
+	\fill (x\i\j) circle (1.5pt) node [below] {\i, \j};
 }
 \end{tikzpicture}
 \end{lstlisting}
@@ -771,6 +772,7 @@ every node/.style = {circle, thick, draw, text centered,
 \end{tikzpicture}
 \end{lstlisting}
 \end{tabular}
+
 
 
 
@@ -844,7 +846,7 @@ every node/.style = {circle, thick, draw, text centered,
 &
 \begin{lstlisting}
 \begin{tikzpicture}[scale = 3]
-\draw [thick, <->] (0,1) node [left] {$V(q)$} 
+\draw [thick, <->] (0,1) node [above] {$V(q)$} 
 	-- (0,0) -- (1,0) node [below] {$q$};
 \draw [very thick] (0,0) to 
 	[out = 90, in = 145] (0.8, 0.9);
