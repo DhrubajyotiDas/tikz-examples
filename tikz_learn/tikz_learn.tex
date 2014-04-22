@@ -946,9 +946,9 @@ line/.style = {draw, ->, thick, >=stealth},
 init/.style = {pin edge = {to-, thick, black}}	
 }
 
-\node [block, pin = {[init] above:$v_0$}] (a) {$\dfrac{1}{s}$};
+\node [block, pin = {[init]above:$v_0$}] (a) {$\dfrac{1}{s}$};
 \node [left = of a, node distance = 2cm, coordinate] (begin) {};
-\node [block, pin = {[init] above:$p_0$}, right = of a] (c)  {$\dfrac{1}{s}$};
+\node [block, pin = {[init]above:$p_0$}, right = of a] (c)  {$\dfrac{1}{s}$};
 \node [right = of c, node distance = 2cm, coordinate] (end) {};
 \path [line] (begin) -- node {$a$} (a);
 \path [line] (a) -- node {$v$} (c);
