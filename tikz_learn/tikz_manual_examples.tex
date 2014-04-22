@@ -31,7 +31,7 @@
     %frame=L
 } 
 
-\usetikzlibrary{intersections, angles, quotes}
+\usetikzlibrary{intersections}
 
 
 \section{A Trigonometry Example} % (fold)
@@ -97,16 +97,32 @@ information text/.style = {rounded corners, fill = red!10, inner sep = 1ex}]
 
 \end{tikzpicture}
 
+\section{Petri-Nets} % (fold)
+\label{sec:petri_nets}
 
-g $g$
+\usetikzlibrary{arrows, decorations.pathmorphing, backgrounds, fit, positioning}
 
-$v$
+\begin{tikzpicture}
+[
+place/.style = {circle, draw = blue!50, fill = blue!20, thick,
+                inner sep = 0pt, minimum size = 6mm},
+transition/.style = {rectangle, draw = black!50, fill = black!20, thick,
+                    inner sep = 0pt, minimum size = 4mm}
+]
 
-$\nu$
+\node   [place]         (waiting)                                   {};
+\node   [place]         (critical)          [below = of waiting]    {};
+\node   [place]         (semaphore)         [below = of critical,
+                                            label=above:$s \le 3$]   {};
+\node   [transition]    (leave critical)    [right = of critical]   {};
+\node   [transition]    (enter critical)    [left = of critical]    {};
 
-$w$
+%\node [red, above]  at (semaphore.north) {$s \le 3$};
 
-$\upsilon$
+\end{tikzpicture}
+
+
+
 
 
 
