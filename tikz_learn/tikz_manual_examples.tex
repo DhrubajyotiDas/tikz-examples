@@ -108,17 +108,27 @@ information text/.style = {rounded corners, fill = red!10, inner sep = 1ex}]
 place/.style = {circle, draw = blue!50, fill = blue!20, thick,
                 inner sep = 0pt, minimum size = 6mm},
 transition/.style = {rectangle, draw = black!50, fill = black!20, thick,
-                    inner sep = 0pt, minimum size = 4mm}
+                    inner sep = 0pt, minimum size = 4mm},
+every label/.style = {red},
+bend angle = 45,
+pre/.style = {<-, >=stealth', semithick, shorten <=1 pt},
+post/.style = {->, >=stealth', semithick, shorten >=1 pt},
 ]
 
 \node   [place]         (waiting)                                   {};
 \node   [place]         (critical)          [below = of waiting]    {};
 \node   [place]         (semaphore)         [below = of critical,
                                             label=above:$s \le 3$]   {};
-\node   [transition]    (leave critical)    [right = of critical]   {};
-\node   [transition]    (enter critical)    [left = of critical]    {};
 
-%\node [red, above]  at (semaphore.north) {$s \le 3$};
+\node   [transition]    (leave critical)    [right = of critical]   {}
+    edge [pre]              (critical)
+    edge [pre, bend left]   (semaphore)
+    edge [post, bend right] node [auto, swap] {2} (waiting);
+\node   [transition]    (enter critical)    [left = of critical]    {}
+    edge [pre, bend left] (waiting)
+    edge [post, bend right] (semaphore)
+    edge [post] (critical);
+
 
 \end{tikzpicture}
 
