@@ -129,17 +129,20 @@ post/.style = {->, >=stealth', semithick, shorten >=1 pt},
     edge [post, bend right] (semaphore)
     edge [post] (critical);
 
+\begin{scope}[on background layer]  
+    \node [fill = black!20, fit = (waiting) (critical) (semaphore) (leave critical) (enter critical)] {};    
+\end{scope}
 
 \end{tikzpicture}
 
 \begin{tikzpicture}
-\draw [->, decorate, decoration = {snake, amplitude = 0.4mm, segment length = 2mm, post length = .5mm}] (0,0) -- (2,0);
+\draw [->, decorate, decoration = {snake, amplitude = 0.4mm, segment length = 2mm, post length = .5mm}] 
+(0,0) -- 
+    node [auto,align = center, text width = 3cm] {replacement of the \textcolor{red}{capacity} by \textcolor{red}{two places}}
+(3,0);
+
 \end{tikzpicture}
 
-
-\begin{tikzpicture}
-\draw (0,0) .. controls +(up:5cm) and +(left:3cm) .. (1,5);
-\end{tikzpicture}
 
 
 
