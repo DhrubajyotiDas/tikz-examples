@@ -91,56 +91,95 @@ information text/.style = {rounded corners, fill = red!10, inner sep = 1ex}]
         By the Theorem of Pythagoras we have {\color{coscolor} $\cos^2\alpha$} + {\color{sincolor} $\sin^2 \alpha$} = 1. Thus the length of the blue line, which is the {\color{coscolor} cosine of $\alpha$}, must be \[{\color{coscolor} \cos \alpha} = \sqrt{1-\frac{1}{4}} = \frac{1}{2}\sqrt{3}.\]
         This shows that {\color{tancolor} $\tan \alpha$}, which is the height of the orange line, is \[{\color{tancolor} \tan \alpha} = \frac{\color{sincolor}\sin \alpha}{\color{coscolor}\cos\alpha} = \frac{1}{\sqrt{3}}.\]
     };
-
-
-
-
 \end{tikzpicture}
+
+
+
 
 \section{Petri-Nets} % (fold)
 \label{sec:petri_nets}
 
 
-\usetikzlibrary{arrows, decorations.pathmorphing, backgrounds, fit, positioning}
+\usetikzlibrary{arrows, decorations.pathmorphing, backgrounds, 
+                fit, positioning, petri}
 
 \begin{tikzpicture}
 [
-place/.style = {circle, draw = blue!50, fill = blue!20, thick,
-                inner sep = 0pt, minimum size = 6mm},
-transition/.style = {rectangle, draw = black!50, fill = black!20, thick,
-                    inner sep = 0pt, minimum size = 4mm},
-every label/.style = {red},
-bend angle = 45,
-pre/.style = {<-, >=stealth', semithick, shorten <=1 pt},
-post/.style = {->, >=stealth', semithick, shorten >=1 pt},
+node distance = 1.3 cm, on grid, >=stealth', bend angle = 45, auto,
+every place/.style = {minimum size = 6 mm, thick, draw = blue!50, fill = blue!20},
+every transition/.style = {thick, draw = black!75, fill = black!20},
+red place/.style = {place, draw = red!75, fill = red!20},
+every label/.style = {red}
 ]
 
-\node   [place]         (waiting)                                   {};
-\node   [place]         (critical)          [below = of waiting]    {};
-\node   [place]         (semaphore)         [below = of critical,
-                                            label=above:$s \le 3$]   {};
+\node   [place, tokens = 1]     (w1)                                            {};
+\node   [place]                 (c1)    [below = of w1]                         {};
+\node   [place]                 (s)     [below = of c1, label=above:$s \le 3$]  {};
+\node   [place]                 (c2)    [below = of s]                          {};
+\node   [place, tokens = 1]     (w2)    [below = of c2]                         {};
 
-\node   [transition]    (leave critical)    [right = of critical]   {}
-    edge [pre]              (critical)
-    edge [pre, bend left]   (semaphore)
-    edge [post, bend right] node [auto, swap] {2} (waiting);
-\node   [transition]    (enter critical)    [left = of critical]    {}
-    edge [pre, bend left] (waiting)
-    edge [post, bend right] (semaphore)
-    edge [post] (critical);
+\node   [transition]            (e1)    [left = of c1]                          {}
+    edge [pre, bend left]                   (w1)
+    edge [post, bend right]                 (s)
+    edge [post]                             (c1);
+\node   [transition]            (e2)    [left = of c2]                          {}
+    edge [pre, bend right]                  (w2)
+    edge [post]                             (c2)
+    edge [post, bend left]                  (s);
+\node   [transition]            (l1)    [right = of c1]                         {}
+    edge [pre, bend left]                   (s)
+    edge [pre]                              (c1)
+    edge [post, bend right] node [swap] {2} (w1);
+\node   [transition]            (l2)    [right = of c2]                         {}
+    edge [pre]                              (c2)
+    edge [pre, bend right]                  (s)
+    edge [post, bend left] node {2}         (w2);
 
-\begin{scope}[on background layer]  
-    \node [fill = black!20, fit = (waiting) (critical) (semaphore) (leave critical) (enter critical)] {};    
+
+\begin{scope}[xshift = 6 cm]
+\node   [place, tokens = 1]     (w1')                                           {};
+\node   [place]                 (c1')   [below = of w1']                        {};
+\node   [red place]             (s1')   [below = of c1', xshift = -5 mm]
+                                        [label = left:$s$]                      {};
+\node   [red place, tokens = 3] (s2')   [below = of c1', xshift = 5 mm]
+                                        [label = right:$\bar s$]                {};
+\node   [place]                 (c2')   [below = of s1', xshift = 5 mm]                         {};
+\node   [place, tokens = 1]     (w2')   [below = of c2']                        {};
+
+\node   [transition]            (e1')   [left = of c1']                         {}
+    edge [pre, bend left]                   (w1')
+    edge [post]                             (c1')
+    edge [post]                             (s1')
+    edge [pre]                              (s2');
+\node   [transition]            (e2')   [left = of c2']                         {}
+    edge [pre]                              (s2')
+    edge [pre, bend right]                  (w2')
+    edge [post]                             (s1')
+    edge [post]                             (c2');
+\node   [transition]            (l1')   [right = of c1']                        {}
+    edge [pre]                              (c1')
+    edge [pre]                              (s1')
+    edge [post]                             (s2')
+    edge [post, bend right]node [swap] {2}  (w1');
+\node   [transition]            (l2')   [right = of c2']                        {}
+    edge [pre]                              (c2')
+    edge [pre]                              (s1')
+    edge [post]                             (s2')
+    edge [post, bend left] node {2}         (w2');
+
+\end{scope}    
+
+\begin{scope}[on background layer]
+    \node (r1) [fill = black!10, rounded corners, fit = (w1)(w2)(e1)(l2)] {};
+    \node (r2) [fill = black!10, rounded corners, fit = (w1')(w2')(e1')(l2')] {};
 \end{scope}
 
-\end{tikzpicture}
-
-\begin{tikzpicture}
-\draw [->, decorate, decoration = {snake, amplitude = 0.4mm, segment length = 2mm, post length = .5mm}] 
-(0,0) -- 
-    node [auto,align = center, text width = 3cm] {replacement of the \textcolor{red}{capacity} by \textcolor{red}{two places}}
-(3,0);
-
+\draw [-to, shorten >=1mm, thick, decorate,
+        decoration = {snake, amplitude = .4mm, segment length = 2mm, 
+                        post length = 2mm, pre = moveto, pre length = 1mm}] 
+    (r1) -- node [text width = 3cm, align = center] 
+    {replacement of the \textcolor{red}{capacity} by \textcolor{red}{two places}}
+    (r2);
 \end{tikzpicture}
 
 
