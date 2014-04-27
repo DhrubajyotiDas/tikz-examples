@@ -35,154 +35,242 @@
 
 
 \section{A Trigonometry Example} % (fold)
-\label{sec:a_trigonometry_example}
+    \label{sec:a_trigonometry_example}
 
-% section a_trigonometry_example (end)
-\begin{tikzpicture}[scale = 3, line cap = round, >=stealth,
-% Styles
-axes/.style = ,
-important line/.style = {very thick},
-information text/.style = {rounded corners, fill = red!10, inner sep = 1ex}]
+    % section a_trigonometry_example (end)
+    \begin{tikzpicture}[scale = 3, line cap = round, >=stealth,
+    % Styles
+    axes/.style = ,
+    important line/.style = {very thick},
+    information text/.style = {rounded corners, fill = red!10, inner sep = 1ex}]
 
-% Colors
-\colorlet{anglecolor}{green!50!blue}
-\colorlet{sincolor}{red}
-\colorlet{tancolor}{orange!90!black}
-\colorlet{coscolor}{blue}
+    % Colors
+    \colorlet{anglecolor}{green!50!blue}
+    \colorlet{sincolor}{red}
+    \colorlet{tancolor}{orange!90!black}
+    \colorlet{coscolor}{blue}
 
-% The graphic
-\draw [help lines, step = 0.5cm] (-1.4, -1.4) grid (1.4, 1.4);
+    % The graphic
+    \draw [help lines, step = 0.5cm] (-1.4, -1.4) grid (1.4, 1.4);
 
-\draw (0,0) circle [radius = 1 cm];
+    \draw (0,0) circle [radius = 1 cm];
 
-\begin{scope}[axes]
-    \draw [->] (-1.5, 0) -- (1.5, 0) node [right] {$x$} coordinate (x axis);
-    \draw [->] (0, -1.5) -- (0, 1.5) node [above] {$y$} coordinate (y axis);
+    \begin{scope}[axes]
+        \draw [->] (-1.5, 0) -- (1.5, 0) node [right] {$x$} coordinate (x axis);
+        \draw [->] (0, -1.5) -- (0, 1.5) node [above] {$y$} coordinate (y axis);
 
-    \foreach \x / \xmath in {-1, -0.5 / -\frac{1}{2}, 1}
-        \draw (\x, 1pt) -- (\x, -1pt) node [below, fill = white] {$\xmath$};
-    \foreach \y / \ymath in {-1, -0.5/ -\frac{1}{2} , 0.5 / \frac{1}{2}, 1}    
-        \draw (1pt, \y) -- (-1pt, \y) node [left, fill = white] {$\ymath$};
-\end{scope}
+        \foreach \x / \xmath in {-1, -0.5 / -\frac{1}{2}, 1}
+            \draw (\x, 1pt) -- (\x, -1pt) node [below, fill = white] {$\xmath$};
+        \foreach \y / \ymath in {-1, -0.5/ -\frac{1}{2} , 0.5 / \frac{1}{2}, 1}    
+            \draw (1pt, \y) -- (-1pt, \y) node [left, fill = white] {$\ymath$};
+    \end{scope}
 
-\filldraw[fill = green!20, draw = anglecolor] (0,0) -- (0.3, 0)
-    arc [start angle = 0, end angle = 30, radius = 3 mm] -- cycle;
-\draw (15:2mm) node [anglecolor] {$\alpha$};
+    \filldraw[fill = green!20, draw = anglecolor] (0,0) -- (0.3, 0)
+        arc [start angle = 0, end angle = 30, radius = 3 mm] -- cycle;
+    \draw (15:2mm) node [anglecolor] {$\alpha$};
 
-\draw[important line, sincolor]
-    (30:1)	-- node[left, fill = white] {$\sin\alpha$} (30:1 |- x axis);
+    \draw[important line, sincolor]
+        (30:1)	-- node[left, fill = white] {$\sin\alpha$} (30:1 |- x axis);
 
-\draw[important line, coscolor]
-    (0,0)  -- node[below, fill = white] {$\cos\alpha$} (30:1 |- x axis);    
+    \draw[important line, coscolor]
+        (0,0)  -- node[below, fill = white] {$\cos\alpha$} (30:1 |- x axis);    
 
-\path [name path = upward line] (1,0) -- (1,1);
-\path [name path = slanted line] (0,0) -- (30:2);
-\draw [important line, tancolor,
-        name intersections = {of = upward line and slanted line, by = t}] 
-        (1,0) -- node [right, fill = white] {$\tan\alpha \color{black} = \dfrac{\color{red}\sin\alpha}{\color{blue}\cos\alpha}$} (t);
+    \path [name path = upward line] (1,0) -- (1,1);
+    \path [name path = slanted line] (0,0) -- (30:2);
+    \draw [important line, tancolor,
+            name intersections = {of = upward line and slanted line, by = t}] 
+            (1,0) -- node [right, fill = white] {$\tan\alpha \color{black} = \dfrac{\color{red}\sin\alpha}{\color{blue}\cos\alpha}$} (t);
 
-\draw (0,0) -- (t);
+    \draw (0,0) -- (t);
 
-% Informational text
-\draw[xshift = 1.85 cm]
-    node [right, text width = 6 cm, information text]
-    {
-        The {\color{anglecolor} angle $\alpha$} is $30^\circ$ in the example ($\pi/6$ in radians). The {\color{sincolor} sine of $\alpha$}, which is the height of the red line, is \[{\color{sincolor} \sin \alpha} = \frac{1}{2}.\]
-        By the Theorem of Pythagoras we have {\color{coscolor} $\cos^2\alpha$} + {\color{sincolor} $\sin^2 \alpha$} = 1. Thus the length of the blue line, which is the {\color{coscolor} cosine of $\alpha$}, must be \[{\color{coscolor} \cos \alpha} = \sqrt{1-\frac{1}{4}} = \frac{1}{2}\sqrt{3}.\]
-        This shows that {\color{tancolor} $\tan \alpha$}, which is the height of the orange line, is \[{\color{tancolor} \tan \alpha} = \frac{\color{sincolor}\sin \alpha}{\color{coscolor}\cos\alpha} = \frac{1}{\sqrt{3}}.\]
-    };
-\end{tikzpicture}
-
-
-
+    % Informational text
+    \draw[xshift = 1.85 cm]
+        node [right, text width = 6 cm, information text]
+        {
+            The {\color{anglecolor} angle $\alpha$} is $30^\circ$ in the example ($\pi/6$ in radians). The {\color{sincolor} sine of $\alpha$}, which is the height of the red line, is \[{\color{sincolor} \sin \alpha} = \frac{1}{2}.\]
+            By the Theorem of Pythagoras we have {\color{coscolor} $\cos^2\alpha$} + {\color{sincolor} $\sin^2 \alpha$} = 1. Thus the length of the blue line, which is the {\color{coscolor} cosine of $\alpha$}, must be \[{\color{coscolor} \cos \alpha} = \sqrt{1-\frac{1}{4}} = \frac{1}{2}\sqrt{3}.\]
+            This shows that {\color{tancolor} $\tan \alpha$}, which is the height of the orange line, is \[{\color{tancolor} \tan \alpha} = \frac{\color{sincolor}\sin \alpha}{\color{coscolor}\cos\alpha} = \frac{1}{\sqrt{3}}.\]
+        };
+    \end{tikzpicture}
 
 \section{Petri-Nets} % (fold)
-\label{sec:petri_nets}
+    \label{sec:petri_nets}
 
 
-\usetikzlibrary{arrows, decorations.pathmorphing, backgrounds, 
-                fit, positioning, petri}
+    \usetikzlibrary{arrows, decorations.pathmorphing, backgrounds, 
+                    fit, positioning, petri}
+
+    \begin{tikzpicture}
+    [
+    node distance = 1.3 cm, on grid, >=stealth', bend angle = 45, auto,
+    every place/.style = {minimum size = 6 mm, thick, draw = blue!50, fill = blue!20},
+    every transition/.style = {thick, draw = black!75, fill = black!20},
+    red place/.style = {place, draw = red!75, fill = red!20},
+    every label/.style = {red}
+    ]
+
+    \node   [place, tokens = 1]     (w1)                                            {};
+    \node   [place]                 (c1)    [below = of w1]                         {};
+    \node   [place]                 (s)     [below = of c1, label=above:$s \le 3$]  {};
+    \node   [place]                 (c2)    [below = of s]                          {};
+    \node   [place, tokens = 1]     (w2)    [below = of c2]                         {};
+
+    \node   [transition]            (e1)    [left = of c1]                          {}
+        edge [pre, bend left]                   (w1)
+        edge [post, bend right]                 (s)
+        edge [post]                             (c1);
+    \node   [transition]            (e2)    [left = of c2]                          {}
+        edge [pre, bend right]                  (w2)
+        edge [post]                             (c2)
+        edge [post, bend left]                  (s);
+    \node   [transition]            (l1)    [right = of c1]                         {}
+        edge [pre, bend left]                   (s)
+        edge [pre]                              (c1)
+        edge [post, bend right] node [swap] {2} (w1);
+    \node   [transition]            (l2)    [right = of c2]                         {}
+        edge [pre]                              (c2)
+        edge [pre, bend right]                  (s)
+        edge [post, bend left] node {2}         (w2);
+
+
+    \begin{scope}[xshift = 6 cm]
+    \node   [place, tokens = 1]     (w1')                                           {};
+    \node   [place]                 (c1')   [below = of w1']                        {};
+    \node   [red place]             (s1')   [below = of c1', xshift = -5 mm]
+                                            [label = left:$s$]                      {};
+    \node   [red place, tokens = 3] (s2')   [below = of c1', xshift = 5 mm]
+                                            [label = right:$\bar s$]                {};
+    \node   [place]                 (c2')   [below = of s1', xshift = 5 mm]                         {};
+    \node   [place, tokens = 1]     (w2')   [below = of c2']                        {};
+
+    \node   [transition]            (e1')   [left = of c1']                         {}
+        edge [pre, bend left]                   (w1')
+        edge [post]                             (c1')
+        edge [post]                             (s1')
+        edge [pre]                              (s2');
+    \node   [transition]            (e2')   [left = of c2']                         {}
+        edge [pre]                              (s2')
+        edge [pre, bend right]                  (w2')
+        edge [post]                             (s1')
+        edge [post]                             (c2');
+    \node   [transition]            (l1')   [right = of c1']                        {}
+        edge [pre]                              (c1')
+        edge [pre]                              (s1')
+        edge [post]                             (s2')
+        edge [post, bend right]node [swap] {2}  (w1');
+    \node   [transition]            (l2')   [right = of c2']                        {}
+        edge [pre]                              (c2')
+        edge [pre]                              (s1')
+        edge [post]                             (s2')
+        edge [post, bend left] node {2}         (w2');
+
+    \end{scope}    
+
+    \begin{scope}[on background layer]
+        \node (r1) [fill = black!10, rounded corners, fit = (w1)(w2)(e1)(l2)] {};
+        \node (r2) [fill = black!10, rounded corners, fit = (w1')(w2')(e1')(l2')] {};
+    \end{scope}
+
+    \draw [-to, shorten >=1mm, thick, decorate,
+            decoration = {snake, amplitude = .4mm, segment length = 2mm, 
+                            post length = 2mm, pre = moveto, pre length = 1mm}] 
+        (r1) -- node [text width = 3cm, align = center] 
+        {replacement of the \textcolor{red}{capacity} by \textcolor{red}{two places}}
+        (r2);
+    \end{tikzpicture}
+
+\section{Euclid's Elements}
+    \subsection{Book I, Proposition I} % (fold)
+    \label{sub:book_i_proposition_i}
+ 
+ % subsection book_i_proposition_i (end) % (fold)
+    \label{sec:euclid_s_elements}
+
+    \usetikzlibrary{calc, intersections, through, backgrounds}
+
+    \begin{tikzpicture}[thick, help lines/.style = {thin, draw = black!50}]
+    \newcommand{\A}{\textcolor{input}{$A$}}
+    \newcommand{\B}{\textcolor{input}{$B$}}
+    \newcommand{\C}{\textcolor{input}{$C$}}
+    \newcommand{\D}{$D$}
+    \newcommand{\E}{$E$}
+
+    \colorlet{input}{blue!80!black}
+    \colorlet{triangle}{orange}
+    \colorlet{output}{red!70!black}
+
+    \coordinate [label = left:\textcolor{blue}{\A}]    (A) at ($(0,0) + 0.1*(rand, rand)$);
+    \coordinate [label = right:\textcolor{blue}{\B}]   (B) at ($ (1.25,0.25) + 0.1*(rand, rand) $);
+
+    \draw[input, name path = A--B] (A) -- (B);
+
+    \node (D) [name path = D, draw, circle through = (B), label = left:\D] at (A) {};
+
+    \node (E) [name path = E, draw, circle through = (A), label = right:\E] at (B) {};
+                    
+    \path [name intersections = {of = D and E, by = {[label = above:\C]C}}];
+
+    \draw [output] (A) -- (C) -- (B);
+
+    \foreach \point in {A, B, C}
+        \fill [black, opacity = 0.5] (\point) circle (2pt);
+
+    \begin{pgfonlayer}{background}
+        \fill [triangle!80] (A) -- (C) -- (B) -- cycle;
+    \end{pgfonlayer}
+
+
+    % \begin{scope}{on background layer}
+    %     \fill [triangle!80] (A) -- (C) -- (B) -- cycle;
+    % \end{scope}
+
+
+    \node [right, text width = 10cm, align = justify] at (4,0) {
+        \small\textbf{Proposition I}\par
+        \emph{To construct an \textcolor{triangle}{equilateral triangle} on a given \textcolor{input}{finite straigt line}.}
+        \par\vskip 1em
+        Let \A\B\ be the given \textcolor{input}{finite straight line}. It is required to construct an \textcolor{output}{equilateral triangle} on the \textcolor{input}{straight line} \A\B.\par
+        Describe the circle \B\C\D\ with center \A\ and radius \A\B. Again describe the circle \A\C\E\ with center \B\ and radius \B\A. Join the \textcolor{output}{straight lines} \C\A\ and \C\B\ from the point \C\ at which the circles cut one another to the points \A\ and \B.\par
+        Now, since the point \A\ is the center of the circle \C\D\B, therefore \A\C equals \A\B. Again, since the point \B\ is the center of the circle \C\A\E, therefore \B\C\ equals \B\A. But \A\C\ was proced equal to \A\B, therefore each of the straight lines \A\C\ and \B\C\ equals \A\B. And things which equal the same thing equal one another, therefore \A\C\ also equals \B\C. Therefore the three straight lines \A\C, \A\B, and \B\C\ equal one another. Therefore the \textcolor{triangle}{triangle} \A\B\C\ is equilateral, and it has been constructed on the given finite \textcolor{input}{straight line}  \A\B.
+
+
+    };
+
+
+    %\coordinate [label = above:\C] (C) at (intersection-1);
+
+    %\draw [red, name path = C--C'] (C) -- (C');
+
+    %\draw [red] (A) -- (C) (B) -- (C);
+    %\path [name intersections = {of = A--B and C--C', by = F}];
+
+    %\node [fill = red, circle, inner sep = 1pt, label =-45:$F$] at (F) {};
+
+    %\draw [red] (C) -- (C');
+
+
+
+    \end{tikzpicture}
+
+\subsection{Book I, Proposition II} % (fold)
+\label{sub:book_i_proposition_ii}
 
 \begin{tikzpicture}
-[
-node distance = 1.3 cm, on grid, >=stealth', bend angle = 45, auto,
-every place/.style = {minimum size = 6 mm, thick, draw = blue!50, fill = blue!20},
-every transition/.style = {thick, draw = black!75, fill = black!20},
-red place/.style = {place, draw = red!75, fill = red!20},
-every label/.style = {red}
-]
+\coordinate [label = left:$A$] (A) at (0,0);
+\coordinate [label = right:$B$] (B) at (0.75, 0.25);
+\coordinate [label = above:$C$] (C) at (1.75, 1.75);
 
-\node   [place, tokens = 1]     (w1)                                            {};
-\node   [place]                 (c1)    [below = of w1]                         {};
-\node   [place]                 (s)     [below = of c1, label=above:$s \le 3$]  {};
-\node   [place]                 (c2)    [below = of s]                          {};
-\node   [place, tokens = 1]     (w2)    [below = of c2]                         {};
+\draw (A) -- (B) -- (C);
 
-\node   [transition]            (e1)    [left = of c1]                          {}
-    edge [pre, bend left]                   (w1)
-    edge [post, bend right]                 (s)
-    edge [post]                             (c1);
-\node   [transition]            (e2)    [left = of c2]                          {}
-    edge [pre, bend right]                  (w2)
-    edge [post]                             (c2)
-    edge [post, bend left]                  (s);
-\node   [transition]            (l1)    [right = of c1]                         {}
-    edge [pre, bend left]                   (s)
-    edge [pre]                              (c1)
-    edge [post, bend right] node [swap] {2} (w1);
-\node   [transition]            (l2)    [right = of c2]                         {}
-    edge [pre]                              (c2)
-    edge [pre, bend right]                  (s)
-    edge [post, bend left] node {2}         (w2);
+\node [inner sep = 0, label = above:$D$] (D) at ($ (A) ! 0.5 ! (B) ! {sin(60)*2} ! 90:(B) $) {};
 
 
-\begin{scope}[xshift = 6 cm]
-\node   [place, tokens = 1]     (w1')                                           {};
-\node   [place]                 (c1')   [below = of w1']                        {};
-\node   [red place]             (s1')   [below = of c1', xshift = -5 mm]
-                                        [label = left:$s$]                      {};
-\node   [red place, tokens = 3] (s2')   [below = of c1', xshift = 5 mm]
-                                        [label = right:$\bar s$]                {};
-\node   [place]                 (c2')   [below = of s1', xshift = 5 mm]                         {};
-\node   [place, tokens = 1]     (w2')   [below = of c2']                        {};
+%\draw (A) -- (D) -- (B);
 
-\node   [transition]            (e1')   [left = of c1']                         {}
-    edge [pre, bend left]                   (w1')
-    edge [post]                             (c1')
-    edge [post]                             (s1')
-    edge [pre]                              (s2');
-\node   [transition]            (e2')   [left = of c2']                         {}
-    edge [pre]                              (s2')
-    edge [pre, bend right]                  (w2')
-    edge [post]                             (s1')
-    edge [post]                             (c2');
-\node   [transition]            (l1')   [right = of c1']                        {}
-    edge [pre]                              (c1')
-    edge [pre]                              (s1')
-    edge [post]                             (s2')
-    edge [post, bend right]node [swap] {2}  (w1');
-\node   [transition]            (l2')   [right = of c2']                        {}
-    edge [pre]                              (c2')
-    edge [pre]                              (s1')
-    edge [post]                             (s2')
-    edge [post, bend left] node {2}         (w2');
+\node [circle through = (C), label = 135:$H$, draw] at (B) {};
 
-\end{scope}    
-
-\begin{scope}[on background layer]
-    \node (r1) [fill = black!10, rounded corners, fit = (w1)(w2)(e1)(l2)] {};
-    \node (r2) [fill = black!10, rounded corners, fit = (w1')(w2')(e1')(l2')] {};
-\end{scope}
-
-\draw [-to, shorten >=1mm, thick, decorate,
-        decoration = {snake, amplitude = .4mm, segment length = 2mm, 
-                        post length = 2mm, pre = moveto, pre length = 1mm}] 
-    (r1) -- node [text width = 3cm, align = center] 
-    {replacement of the \textcolor{red}{capacity} by \textcolor{red}{two places}}
-    (r2);
+\draw ($ (D) ! 2 ! (B)$) -- (D) -- ($  (D) ! 2 ! (A) $);
 \end{tikzpicture}
-
-
 
 
 \end{document}
