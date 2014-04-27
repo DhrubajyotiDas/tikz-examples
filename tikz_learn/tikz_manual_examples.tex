@@ -319,20 +319,20 @@
         \end{tikzpicture}
 
 \section{Five-state Busy Beaver} % (fold)
-\label{sec:five_state_busy_beaver}
+    \label{sec:five_state_busy_beaver}
 
-\usetikzlibrary{arrows, automata, shadows}
+    \usetikzlibrary{arrows, automata, shadows}
 
-\begin{tikzpicture}[scale = 1,
-->, >=stealth', shorten >=1pt,auto,node distance=2.8cm,on grid,semithick,
-every state/.style={draw=red!85!black,fill=none,text=black}
-]
-\node[initial,state] (A) {$q_a$};
-\node[state] (B) [above right=of A] {$q_b$};
-\node[state] (D) [below right=of A] {$q_d$};
-\node[state] (C) [below right=of B] {$q_c$};
-\node[state] (E) [below=of D] {$q_e$};
-\path   (A) edge node {0, 1, \textsc{l}} (B)
+    \begin{tikzpicture}[scale = 1,
+    ->, >=stealth', shorten >=1pt,auto,node distance=2.8cm,on grid,semithick,
+    every state/.style={draw=red!85!black,fill=none,text=black}
+    ]
+    \node[initial,state] (A) {$q_a$};
+    \node[state] (B) [above right=of A] {$q_b$};
+    \node[state] (D) [below right=of A] {$q_d$};
+    \node[state] (C) [below right=of B] {$q_c$};
+    \node[state] (E) [below=of D] {$q_e$};
+    \path   (A) edge node {0, 1, \textsc{l}} (B)
         edge node {1, 1, \textsc{r}} (C)
         (B) edge [loop above] node {1, 1, \textsc{l}} (B)
         edge node {0, 1, \textsc{l}} (C)
@@ -341,15 +341,15 @@ every state/.style={draw=red!85!black,fill=none,text=black}
         (D) edge [loop below] node {1, 1, \textsc{r}} (D)
         edge node {0, 1, \textsc{r}} (A)
         (E) edge [bend left] node {1, 0, \textsc{r}} (A);
-\node [right=1cm,text width=8cm] at (C)
-{
-The current candidate for the busy beaver for five states. It is
-presumed that this Turing machine writes a maximum number of
-$1$'s before halting among all Turing machines with five states
-and the tape alphabet $\{0, 1\}$. Proving this conjecture is an
-open research problem.
-};
-\end{tikzpicture}
+    \node [right=1cm,text width=8cm] at (C)
+    {
+    The current candidate for the busy beaver for five states. It is
+    presumed that this Turing machine writes a maximum number of
+    $1$'s before halting among all Turing machines with five states
+    and the tape alphabet $\{0, 1\}$. Proving this conjecture is an
+    open research problem.
+    };
+    \end{tikzpicture}   
 
 
 \end{document}
