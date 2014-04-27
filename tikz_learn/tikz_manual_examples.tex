@@ -6,6 +6,7 @@
 
 \usepackage{amsmath}
 \usepackage[margin = 1in]{geometry}
+\usepackage{pgf}
 \usepackage{tikz}
 \usepackage{listings}
 
@@ -177,99 +178,177 @@
         (r1) -- node [text width = 3cm, align = center] 
         {replacement of the \textcolor{red}{capacity} by \textcolor{red}{two places}}
         (r2);
-    \end{tikzpicture}
+    \end{tikzpicture} 
 
 \section{Euclid's Elements}
     \subsection{Book I, Proposition I} % (fold)
-    \label{sub:book_i_proposition_i}
- 
- % subsection book_i_proposition_i (end) % (fold)
-    \label{sec:euclid_s_elements}
+        \label{sub:book_i_proposition_i}
+     
+     % subsection book_i_proposition_i (end) % (fold)
+        \label{sec:euclid_s_elements}
 
-    \usetikzlibrary{calc, intersections, through, backgrounds}
+        \usetikzlibrary{calc, intersections, through, backgrounds}
 
-    \begin{tikzpicture}[thick, help lines/.style = {thin, draw = black!50}]
-    \newcommand{\A}{\textcolor{input}{$A$}}
-    \newcommand{\B}{\textcolor{input}{$B$}}
-    \newcommand{\C}{\textcolor{input}{$C$}}
-    \newcommand{\D}{$D$}
-    \newcommand{\E}{$E$}
+        \begin{tikzpicture}[thick, help lines/.style = {thin, draw = black!50}]
+        \newcommand{\A}{\textcolor{input}{$A$}}
+        \newcommand{\B}{\textcolor{input}{$B$}}
+        \newcommand{\C}{\textcolor{input}{$C$}}
+        \newcommand{\D}{$D$}
+        \newcommand{\E}{$E$}
 
-    \colorlet{input}{blue!80!black}
-    \colorlet{triangle}{orange}
-    \colorlet{output}{red!70!black}
+        \colorlet{input}{blue!80!black}
+        \colorlet{triangle}{orange}
+        \colorlet{output}{red!70!black}
 
-    \coordinate [label = left:\textcolor{blue}{\A}]    (A) at ($(0,0) + 0.1*(rand, rand)$);
-    \coordinate [label = right:\textcolor{blue}{\B}]   (B) at ($ (1.25,0.25) + 0.1*(rand, rand) $);
+        \coordinate [label = left:\textcolor{blue}{\A}]    (A) at ($(0,0) + 0.1*(rand, rand)$);
+        \coordinate [label = right:\textcolor{blue}{\B}]   (B) at ($ (1.25,0.25) + 0.1*(rand, rand) $);
 
-    \draw[input, name path = A--B] (A) -- (B);
+        \draw[input, name path = A--B] (A) -- (B);
 
-    \node (D) [name path = D, draw, circle through = (B), label = left:\D] at (A) {};
+        \node (D) [name path = D, help lines, draw, circle through = (B), label = left:\D] at (A) {};
 
-    \node (E) [name path = E, draw, circle through = (A), label = right:\E] at (B) {};
-                    
-    \path [name intersections = {of = D and E, by = {[label = above:\C]C}}];
+        \node (E) [name path = E, help lines, draw, circle through = (A), label = right:\E] at (B) {};
+                        
+        \path [name intersections = {of = D and E, by = {[label = above:\C]C}}];
 
-    \draw [output] (A) -- (C) -- (B);
+        \draw [output] (A) -- (C) -- (B);
 
-    \foreach \point in {A, B, C}
-        \fill [black, opacity = 0.5] (\point) circle (2pt);
+        \foreach \point in {A, B, C}
+            \fill [black, opacity = 0.5] (\point) circle (2pt);
 
-    \begin{pgfonlayer}{background}
-        \fill [triangle!80] (A) -- (C) -- (B) -- cycle;
-    \end{pgfonlayer}
-
-
-    % \begin{scope}{on background layer}
-    %     \fill [triangle!80] (A) -- (C) -- (B) -- cycle;
-    % \end{scope}
+        \begin{pgfonlayer}{background}
+            \fill [triangle!80] (A) -- (C) -- (B) -- cycle;
+        \end{pgfonlayer}
 
 
-    \node [right, text width = 10cm, align = justify] at (4,0) {
-        \small\textbf{Proposition I}\par
-        \emph{To construct an \textcolor{triangle}{equilateral triangle} on a given \textcolor{input}{finite straigt line}.}
-        \par\vskip 1em
-        Let \A\B\ be the given \textcolor{input}{finite straight line}. It is required to construct an \textcolor{output}{equilateral triangle} on the \textcolor{input}{straight line} \A\B.\par
-        Describe the circle \B\C\D\ with center \A\ and radius \A\B. Again describe the circle \A\C\E\ with center \B\ and radius \B\A. Join the \textcolor{output}{straight lines} \C\A\ and \C\B\ from the point \C\ at which the circles cut one another to the points \A\ and \B.\par
-        Now, since the point \A\ is the center of the circle \C\D\B, therefore \A\C equals \A\B. Again, since the point \B\ is the center of the circle \C\A\E, therefore \B\C\ equals \B\A. But \A\C\ was proced equal to \A\B, therefore each of the straight lines \A\C\ and \B\C\ equals \A\B. And things which equal the same thing equal one another, therefore \A\C\ also equals \B\C. Therefore the three straight lines \A\C, \A\B, and \B\C\ equal one another. Therefore the \textcolor{triangle}{triangle} \A\B\C\ is equilateral, and it has been constructed on the given finite \textcolor{input}{straight line}  \A\B.
+        % \begin{scope}{on background layer}
+        %     \fill [triangle!80] (A) -- (C) -- (B) -- cycle;
+        % \end{scope}
 
 
-    };
+        \node [right, text width = 10cm, align = justify] at (4,0) {
+            \small\textbf{Proposition I}
+            \\
+            \emph{To construct an \textcolor{triangle}{equilateral triangle} on a given \textcolor{input}{finite straigt line}.}
+            \vskip 1em
+            Let \A\B\ be the given \textcolor{input}{finite straight line}. It is required to construct an \textcolor{output}{equilateral triangle} on the \textcolor{input}{straight line} \A\B.
+            \\
+            Describe the circle \B\C\D\ with center \A\ and radius \A\B. Again describe the circle \A\C\E\ with center \B\ and radius \B\A. Join the \textcolor{output}{straight lines} \C\A\ and \C\B\ from the point \C\ at which the circles cut one another to the points \A\ and \B.
+            \\
+            Now, since the point \A\ is the center of the circle \C\D\B, therefore \A\C equals \A\B. Again, since the point \B\ is the center of the circle \C\A\E, therefore \B\C\ equals \B\A. But \A\C\ was proced equal to \A\B, therefore each of the straight lines \A\C\ and \B\C\ equals \A\B. And things which equal the same thing equal one another, therefore \A\C\ also equals \B\C. Therefore the three straight lines \A\C, \A\B, and \B\C\ equal one another. Therefore the \textcolor{triangle}{triangle} \A\B\C\ is equilateral, and it has been constructed on the given finite \textcolor{input}{straight line}  \A\B.
 
 
-    %\coordinate [label = above:\C] (C) at (intersection-1);
-
-    %\draw [red, name path = C--C'] (C) -- (C');
-
-    %\draw [red] (A) -- (C) (B) -- (C);
-    %\path [name intersections = {of = A--B and C--C', by = F}];
-
-    %\node [fill = red, circle, inner sep = 1pt, label =-45:$F$] at (F) {};
-
-    %\draw [red] (C) -- (C');
+        };
 
 
+        %\coordinate [label = above:\C] (C) at (intersection-1);
 
-    \end{tikzpicture}
+        %\draw [red, name path = C--C'] (C) -- (C');
 
-\subsection{Book I, Proposition II} % (fold)
-\label{sub:book_i_proposition_ii}
+        %\draw [red] (A) -- (C) (B) -- (C);
+        %\path [name intersections = {of = A--B and C--C', by = F}];
 
-\begin{tikzpicture}
-\coordinate [label = left:$A$] (A) at (0,0);
-\coordinate [label = right:$B$] (B) at (0.75, 0.25);
-\coordinate [label = above:$C$] (C) at (1.75, 1.75);
+        %\node [fill = red, circle, inner sep = 1pt, label =-45:$F$] at (F) {};
 
-\draw (A) -- (B) -- (C);
-
-\node [inner sep = 0, label = above:$D$] (D) at ($ (A) ! 0.5 ! (B) ! {sin(60)*2} ! 90:(B) $) {};
+        %\draw [red] (C) -- (C');
 
 
-%\draw (A) -- (D) -- (B);
 
-\node [circle through = (C), label = 135:$H$, draw] at (B) {};
+        \end{tikzpicture}
 
-\draw ($ (D) ! 2 ! (B)$) -- (D) -- ($  (D) ! 2 ! (A) $);
+    \subsection{Book I, Proposition II} % (fold)
+        \label{sub:book_i_proposition_ii}
+
+        \begin{tikzpicture}[scale = 0.9, thick, help lines/.style = {thin, draw = black!50}]
+        \newcommand{\A}{\textcolor{orange}{$A$}}
+        \newcommand{\B}{\textcolor{input}{$B$}}
+        \newcommand{\C}{\textcolor{input}{$C$}}
+        \newcommand{\D}{$D$}
+        \newcommand{\E}{$E$}
+        \newcommand{\F}{$F$}
+        \newcommand{\G}{$G$}
+        \renewcommand{\H}{$H$}
+        \newcommand{\K}{$K$}
+        \renewcommand{\L}{\textcolor{output}{$L$}}
+
+        \colorlet{input}{blue!80!black}
+        \colorlet{output}{red!70!black}
+
+        \coordinate [label = left:\A] (A) at ($(0,0) + 0.1*(rand,rand)$);
+        \coordinate [label = right:\B] (B) at ($(0.75, 0.25) + 0.1*(rand, rand)$);
+        \coordinate [label = above:\C] (C) at ($(1.75, 1.75) + 0.1*(rand, rand)$);
+
+        \draw [input] (B) -- (C);
+        \draw [help lines] (A) -- (B);
+
+        \coordinate [label = above:\D] (D) at ($ (A) ! 0.5 ! (B) ! {sin(60)*2} ! 90:(B) $);
+
+        \draw [help lines] (D) -- ($ (D) ! 4 ! (B) $) coordinate [label = below left:\F] (F);
+        \draw [help lines] (D) -- ($ (D) ! 4 ! (A) $) coordinate [label = left:\E] (E);
+
+        \node (H) [name path = H, help lines, label = 135:\H, draw, circle through = (C)] at (B) {};
+        \path [name path = B--F] (B) -- (F);
+        \path [name intersections = {of = H and B--F, by = {[label = above right:\G]G}}];
+
+        \node (K) [name path = K, help lines, label = 135:\K, draw, circle through = (G)] at (D) {};
+        \path [name path = A--E] (A) -- (E);
+        \path [name intersections = {of = K and A--E, by = {[label = below right:\L]L}}];
+
+        \draw [output] (A) -- (L);
+
+        \foreach \point in {A, B, C, D, G, L}
+            \fill [black, opacity = 0.5] (\point) circle (2pt);
+
+
+        \node [right, text width = 10cm, align = justify] at (4,0) {
+            \small\textbf{Proposition II}
+            \\
+            \emph{To place a \textcolor{output}{straight line} equal to a given \textcolor{input}{straight line} with one end at a \textcolor{orange}{given point}.}
+            \vskip 1em
+            Let \A\ be the given point, and \B\C\ the given \textcolor{input}{straight line}. It is required to place a \textcolor{output}{straight line} equal to the given \textcolor{input}{straight line} \B\C\ with one end at the point \A.\\
+            Join the straight line \A\B\ from the point \A\ to the point \B\, and construct the equilateral triangle \D\A\B\ on it.
+            \\
+            Produce the straight lines \A\E\ and \B\F in a straight line with \D\A\ and \D\B. Describe the circle \C\G\H\ with center \B\ and radius \B\C, and again, describe the circle \G\K\L\ with center \D\ and radius \D\G.
+            \\
+            Since the point \B\ is the center of the circle \C\G\H, therefore \B\C\ equals \B\G. Again, since the point \D\ is the center of the cirlce \G\K\L, therefore \D\L\ equals \D\G. And in these \D\A\ equals \D\B, therefore the remainder \A\L\ equals the remainder \B\G. But \B\C\ was also proved equal to \B\G, therefore each of the straight lines \A\L\ and \B\C\ equals \B\G. And things which equal the same thing also equal one another, therefore \A\L\ also equals \B\C.
+            \\
+            Therefore the \textcolor{input}{straight line} \A\L\ equal to the given \textcolor{input}{straight line} \B\C\ has been placed with one end at the \textcolor{orange}{given point} \A.
+
+
+        };
+        \end{tikzpicture}
+
+\section{Five-state Busy Beaver} % (fold)
+\label{sec:five_state_busy_beaver}
+
+\usetikzlibrary{arrows, automata, shadows}
+
+\begin{tikzpicture}[scale = 1,
+->, >=stealth', shorten >=1pt,auto,node distance=2.8cm,on grid,semithick,
+every state/.style={draw=red!85!black,fill=none,text=black}
+]
+\node[initial,state] (A) {$q_a$};
+\node[state] (B) [above right=of A] {$q_b$};
+\node[state] (D) [below right=of A] {$q_d$};
+\node[state] (C) [below right=of B] {$q_c$};
+\node[state] (E) [below=of D] {$q_e$};
+\path   (A) edge node {0, 1, \textsc{l}} (B)
+        edge node {1, 1, \textsc{r}} (C)
+        (B) edge [loop above] node {1, 1, \textsc{l}} (B)
+        edge node {0, 1, \textsc{l}} (C)
+        (C) edge node {0, 1, \textsc{l}} (D)
+        edge [bend left] node {1, 0, \textsc{r}} (E)
+        (D) edge [loop below] node {1, 1, \textsc{r}} (D)
+        edge node {0, 1, \textsc{r}} (A)
+        (E) edge [bend left] node {1, 0, \textsc{r}} (A);
+\node [right=1cm,text width=8cm] at (C)
+{
+The current candidate for the busy beaver for five states. It is
+presumed that this Turing machine writes a maximum number of
+$1$'s before halting among all Turing machines with five states
+and the tape alphabet $\{0, 1\}$. Proving this conjecture is an
+open research problem.
+};
 \end{tikzpicture}
 
 
